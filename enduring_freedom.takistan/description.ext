@@ -1,0 +1,623 @@
+#include "KPGUI\KPGUI_defines.hpp"
+#include "KPCF\ui\KPCF_dialog.hpp"
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 30;
+	playerCountMultipleOf = 1;
+};
+
+
+//loads internal cba settings file
+cba_settings_hasSettingsFile = 1;
+
+aiKills = 0;
+briefing = 1;
+debriefing = 1;
+disabledAI = 1;
+enableDebugConsole = 1;
+allowFunctionsRecompile = 1;
+allowFunctionsLog = 1;
+respawn = 3;
+respawnDelay = 10;
+respawnTemplates[] = {"MenuPosition"};
+respawnOnStart = 0;
+reviveDelay = 15;
+reviveForceRespawnDelay = 3;
+reviveBleedOutDelay = 180;
+forceRotorLibSimulation = 1;
+joinUnassigned = 1;
+corpseManagerMode = 1;
+corpseLimit = 50;
+corpseRemovalMinTime = 600;
+corpseRemovalMaxTime = 3600;
+wreckManagerMode = 1;
+wreckLimit = 20;
+wreckRemovalMinTime = 1200;
+wreckRemovalMaxTime = 7200;
+minPlayerDistance = 1000;
+
+
+
+class CfgFunctions
+{
+	#include "KPCF\KPCF_functions.hpp"
+};
+
+
+class CfgHints
+{ 
+	#include "medical.hpp"
+};
+
+
+class CfgSounds
+{
+   sounds[] = {muezzin};
+
+	// class Vent {name="Vent";sound[]={ATM_airdrop\data\Vent.ogg,db-11,1.0};titles[] = {};};
+	// class Vent2 {name="Vent2";sound[]={ATM_airdrop\data\Vent2.ogg,db-11,1.0};titles[] = {};};
+	// class Para {name="Para";sound[]={ATM_airdrop\data\parachute.ogg,db-11,1.0};titles[] = {};};
+	class muezzin {name="muezzin";sound[]={sounds\muezzin.ogg,db+10,1.0};titles[] = {};};
+
+	
+	class sswindloop 
+	{
+		name="sswindloop";
+		sound[]={ROS\sound\sswindloop.ogg, 1,1};
+		titles[] = {};
+	};	
+	
+	class sswindintro 
+	{
+		name="sswindintro";
+		sound[]={ROS\sound\sswindintro.ogg, 1,1};
+		titles[] = {};
+	};
+	
+	class sswindoutro {
+		name="sswindoutro";
+		sound[]={ROS\sound\sswindoutro.ogg, 1,1};
+		titles[] = {};
+	};	
+	
+	class sswarning 
+	{
+		name="sswarning";
+		sound[]={ROS\sound\sswarning.ogg, 3,1};
+		titles[] = {};
+	};
+	
+	class hurt1 
+	{
+		name="hurt1";
+		sound[]={ROS\sound\hurt1.ogg, 1 ,1};
+		titles[] = {};
+	};
+	
+	class hurt2 
+	{
+		name="hurt2";
+		sound[]={ROS\sound\hurt2.ogg, 1 ,1};
+		titles[] = {};
+	};	
+	
+	class hurt3 
+	{
+		name="hurt3";
+		sound[]={ROS\sound\hurt3.ogg, 1 ,1};
+		titles[] = {};
+	};	
+	
+	class hurt4 
+	{
+		name="hurt4";
+		sound[]={ROS\sound\hurt4.ogg, 1 ,1};
+		titles[] = {};
+	};	
+	
+	class hurt5 
+	{
+		name="hurt5";
+		sound[]={ROS\sound\hurt5.ogg, 1 ,1};
+		titles[] = {};
+	};	
+	
+	class hurt6 
+	{
+		name="hurt1";
+		sound[]={ROS\sound\hurt6.ogg, 1 ,1};
+		titles[] = {};
+	};	
+	
+	class hurt7 
+	{
+		name="hurt7";
+		sound[]={ROS\sound\hurt7.ogg, 1 ,1};
+		titles[] = {};
+	};	
+
+	class pain1
+	{
+		name = "pain1"; // Display Name for editor
+		sound[] = {"\sounds\pain1.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain2
+	{
+		name = "pain2"; // Display Name for editor
+		sound[] = {"\sounds\pain2.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain3
+	{
+		name = "pain3"; // Display Name for editor
+		sound[] = {"\sounds\pain3.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain4
+	{
+		name = "pain4"; // Display Name for editor
+		sound[] = {"\sounds\pain4.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	
+	class pain5
+	{
+		name = "pain5"; // Display Name for editor
+		sound[] = {"\sounds\pain5.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain6
+	{
+		name = "pain6"; // Display Name for editor
+		sound[] = {"\sounds\pain6.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain7
+	{
+		name = "pain7"; // Display Name for editor
+		sound[] = {"\sounds\pain7.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain8
+	{
+		name = "pain8"; // Display Name for editor
+		sound[] = {"\sounds\pain8.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain9
+	{
+		name = "pain9"; // Display Name for editor
+		sound[] = {"\sounds\pain9.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class pain10
+	{
+		name = "pain10"; // Display Name for editor
+		sound[] = {"\sounds\pain10.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	class pain11
+	{
+		name = "pain11"; // Display Name for editor
+		sound[] = {"\sounds\pain11.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class pain12
+	{
+		name = "pain12"; // Display Name for editor
+		sound[] = {"\sounds\pain12.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class pain13
+	{
+		name = "pain13"; // Display Name for editor
+		sound[] = {"\sounds\pain13.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+
+	//hit
+	class hit1
+	{
+		name = "hit1"; // Display Name for editor
+		sound[] = {"\sounds\hit1.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+		
+	class hit2
+	{
+		name = "hit2"; // Display Name for editor
+		sound[] = {"\sounds\hit2.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit3
+	{
+		name = "hit3"; // Display Name for editor
+		sound[] = {"\sounds\hit3.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit4
+	{
+		name = "hit4"; // Display Name for editor
+		sound[] = {"\sounds\hit4.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit5
+	{
+		name = "hit5"; // Display Name for editor
+		sound[] = {"\sounds\hit5.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit6
+	{
+		name = "hit6"; // Display Name for editor
+		sound[] = {"\sounds\hit6.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit7
+	{
+		name = "hit7"; // Display Name for editor
+		sound[] = {"\sounds\hit7.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit8
+	{
+		name = "hit8"; // Display Name for editor
+		sound[] = {"\sounds\hit8.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit9
+	{
+		name = "hit9"; // Display Name for editor
+		sound[] = {"\sounds\hit9.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class hit10
+	{
+		name = "hit10"; // Display Name for editor
+		sound[] = {"\sounds\hit10.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	
+	//kill	
+	class kill1
+	{
+		name = "kill1"; // Display Name for editor
+		sound[] = {"\sounds\kill1.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+		
+	class kill2
+	{
+		name = "kill2"; // Display Name for editor
+		sound[] = {"\sounds\kill2.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+		
+	class kill3
+	{
+		name = "kill3"; // Display Name for editor
+		sound[] = {"\sounds\kill3.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class kill4
+	{
+		name = "kill4"; // Display Name for editor
+		sound[] = {"\sounds\kill4.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class kill5
+	{
+		name = "kill5"; // Display Name for editor
+		sound[] = {"\sounds\kill5.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+
+
+
+	
+	
+      //fire
+
+		class fire1
+	{
+		name = "fire1"; // Display Name for editor
+		sound[] = {"\sounds\fire1.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire2
+	{
+		name = "fire2"; // Display Name for editor
+		sound[] = {"\sounds\fire2.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire3
+	{
+		name = "fire3"; // Display Name for editor
+		sound[] = {"\sounds\fire3.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire4
+	{
+		name = "fire4"; // Display Name for editor
+		sound[] = {"\sounds\fire4.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	
+	class fire5
+	{
+		name = "fire5"; // Display Name for editor
+		sound[] = {"\sounds\fire5.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire6
+	{
+		name = "fire6"; // Display Name for editor
+		sound[] = {"\sounds\fire6.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire7
+	{
+		name = "fire7"; // Display Name for editor
+		sound[] = {"\sounds\fire7.ogg", 1, 1.0,45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire8
+	{
+		name = "fire8"; // Display Name for editor
+		sound[] = {"\sounds\fire8.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire9
+	{
+		name = "fire9"; // Display Name for editor
+		sound[] = {"\sounds\fire9.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire10
+	{
+		name = "fire10"; // Display Name for editor
+		sound[] = {"\sounds\fire10.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire11
+	{
+		name = "fire11"; // Display Name for editor
+		sound[] = {"\sounds\fire11.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+		
+	class fire12
+	{
+		name = "fire12"; // Display Name for editor
+		sound[] = {"\sounds\fire12.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire13
+	{
+		name = "fire13"; // Display Name for editor
+		sound[] = {"\sounds\fire13.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire14
+	{
+		name = "fire14"; // Display Name for editor
+		sound[] = {"\sounds\fire14.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire45
+	{
+		name = "fire45"; // Display Name for editor
+		sound[] = {"\sounds\fire45.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire16
+	{
+		name = "fire16"; // Display Name for editor
+		sound[] = {"\sounds\fire16.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire17
+	{
+		name = "fire17"; // Display Name for editor
+		sound[] = {"\sounds\fire17.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire18
+	{
+		name = "fire18"; // Display Name for editor
+		sound[] = {"\sounds\fire18.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire19
+	{
+		name = "fire19"; // Display Name for editor
+		sound[] = {"\sounds\fire19.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire20
+	{
+		name = "fire20"; // Display Name for editor
+		sound[] = {"\sounds\fire20.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire21
+	{
+		name = "fire21"; // Display Name for editor
+		sound[] = {"\sounds\fire21.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire22
+	{
+		name = "fire22"; // Display Name for editor
+		sound[] = {"\sounds\fire22.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire23
+	{
+		name = "fire23"; // Display Name for editor
+		sound[] = {"\sounds\fire23.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire24
+	{
+		name = "fire24"; // Display Name for editor
+		sound[] = {"\sounds\fire24.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire
+	{
+		name = "fire"; // Display Name for editor
+		sound[] = {"\sounds\fire.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire26
+	{
+		name = "fire26"; // Display Name for editor
+		sound[] = {"\sounds\fire26.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	class fire27
+	{
+		name = "fire27"; // Display Name for editor
+		sound[] = {"\sounds\fire27.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+	
+	class fire28
+	{
+		name = "fire28"; // Display Name for editor
+		sound[] = {"\sounds\fire28.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire29
+	{
+		name = "fire29"; // Display Name for editor
+		sound[] = {"\sounds\fire29.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire30
+	{
+		name = "fire30"; // Display Name for editor
+		sound[] = {"\sounds\fire30.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire31
+	{
+		name = "fire31"; // Display Name for editor
+		sound[] = {"\sounds\fire31.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire32
+	{
+		name = "fire32"; // Display Name for editor
+		sound[] = {"\sounds\fire32.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire33
+	{
+		name = "fire33"; // Display Name for editor
+		sound[] = {"\sounds\fire33.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	
+	class fire34
+	{
+		name = "fire34"; // Display Name for editor
+		sound[] = {"\sounds\fire34.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	
+	class fire35
+	{
+		name = "fire35"; // Display Name for editor
+		sound[] = {"\sounds\fire35.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	
+	class fire36
+	{
+		name = "fire36"; // Display Name for editor
+		sound[] = {"\sounds\fire36.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	
+	class fire37
+	{
+		name = "fire37"; // Display Name for editor
+		sound[] = {"\sounds\fire37.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+	
+	class fire38
+	{
+		name = "fire38"; // Display Name for editor
+		sound[] = {"\sounds\fire38.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		titles[]={}; //Do not use unless you know what you are doing!
+	};
+
+};

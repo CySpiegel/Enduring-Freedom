@@ -1,0 +1,17 @@
+class Sentences
+{
+	class IsleyLine_1
+	{
+		text = "Let me show you what I've got.";
+		speech[] = {"\cys_tasking\briefing\isleyDialog\audio\Line_1.ogg"};
+		actor = "player";
+		variant = "";
+		variantText = "";
+		class Arguments {};
+	};
+};
+
+class Arguments{};
+class Special{};
+startWithVocal[] = {hour};
+startWithConsonant[] = {europe, university};
