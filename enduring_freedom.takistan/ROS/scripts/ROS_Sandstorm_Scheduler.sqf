@@ -38,7 +38,7 @@ WEATHER REPORT:
 Added a new addaction option for weather report to be placed on a laptop in game. Also useful for debugging.
 NOTE: Weather report only works with the scheduler. Place the following in a laptop init field:
 
-this addAction["<t color='#3399ff'>WEATHER REPORT</t>", {hint WeatherReport},[], 1, true, false,"","_this distance _target < 4"];
+this addAction["<t color='#3399ff'>WEATHER REPORT</t>", {hint WeatherReport},[], 1, true, false,"","SSchedulerRunning && _this distance _target < 4"];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 // For testing change next line to _debug = true; to hint num of storms and when storms will happen etc.
@@ -56,6 +56,11 @@ _hatCheck = false;
 
 /*===================================== DON'T CHANGE LINES BELOW ======================================================================*/
 if !(isServer) exitWith {};
+
+SSchedulerRunning = true;
+publicVariable "SSchedulerRunning";
+
+if (isnil "SStormRunning") then {SStormRunning = false};
 
 _minNumOfSandstorms = _this select 0;
 _maxNumOfSandstorms = _this select 1;
@@ -104,6 +109,10 @@ if (NumOfSandstorms > 0) then {
 	_nextStormTimeDiff = 0;
 };
 if (_debug) then {Hint format ["There are %1 sandstorms\nstarting at these times:\n%2\nNext storm in: %3", NumOfSandstorms, _stormStartTimes, _nextStormTimeDiff]};
+
+copyToClipboard _nextStormTimeDiff;
+sleep 1;
+if (_debug) then {hint "Next storm time difference copied to clipboard\nPaste into skiptime in debug console"};
 
 sleep 1;
 

@@ -20,6 +20,10 @@ null = [150] execvm "ROS\scripts\ROSsandstorm.sqf";
 Min length 150 seconds.
 Recommended storm lengths are 150 + (55 x n) = (150,205,260,315,370,425,480 etc.)
 
+NOTE: If running on Dedicated server and calling sandstorm via a trigger (i.e. not using the scheduler):
+Make sure trigger has server only box checked. In trigger On activation field put:
+[[150],"ROS\scripts\ROSsandstorm.sqf"] remoteexec ["BIS_fnc_execVM"];
+
 For random storm scheduling - listen or dedicated server use the ROS_Sandstorm_Scheduler.sqf file.
 See script header for usage.
 */
@@ -44,10 +48,17 @@ See script header for usage.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 params ["_dur","_eyewearCheck","_hatCheck","_SelectedWindDir","_debug"];
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-if (!isnil "SStormRunning" && SStormRunning) exitWith {};
+
+// Run only once
+if (isnil "SStormRunning") then {SStormRunning = false};
+if (SStormRunning) exitWith {};
+
+SStormRunning = true;
+publicVariable "SStormRunning";
+
 if (isnil "_dur") then {_dur = 150};
 if (isnil "_SelectedWindDir") then {_SelectedWindDir = "Current";};
-if (isnil "_debug") then {_debug = false};
+if (isnil "_debug") then {_debug = false}; // change to true for local testing
 // Save current wind
 _origwind = wind;
 _origWindir = windDir;
@@ -65,10 +76,6 @@ if (_debug) then {hint format ["WindX:%1 WindY:%2 Windspeed:%3 WindDir:%4",_orig
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Save current volume
 _originalVolume = soundVolume;
-// Prevent more than one storm running at a time
-SStormRunning = true;
-publicVariable "SStormRunning";
-
 _endtime = time + _dur;
 if (_debug) then {hint format ["Endtime %1", _endtime]; sleep 3; hint "SS start"};
 
@@ -128,11 +135,12 @@ _WindVectorX = wind select 0;
 _WindVectorY = wind select 1;
 _leaves_p  = "#particlesource" createVehicleLocal (getpos vehicle player);
 _leaves_p attachto [vehicle player];
-_leaves_p setParticleRandom [0, [10, 10, 7], [4, 4, 5], 2, 0.1, [0, 0, 0, 0.5], 1, 1];
 _leaves_p setParticleCircle [100, [0, 0, 0]];
 _leaves_p setParticleParams [
 ["\A3\data_f\ParticleEffects\Hit_Leaves\Sticks", 1, 1, 1], "", "SpaceObject", 1, 27, [0,0,0], [_WindVectorX, _WindVectorY, 3], 2, 0.000001, 0.0, 0.1, [0.5 + random 0.5], [[0.68,0.68,0.68,1]], [1.5,1], 13, 13, "", "", vehicle player, 0, true ,1, [[0,0,0,0]]];
-_leaves_p setDropInterval 0.025;
+//setPartRand [lifeTime, position, moveVelocity, rotationVelocity, size, color, randomDirectionPeriod, randomDirectionIntensity, angle, bounceOnSurf]:
+_leaves_p setParticleRandom [0, [10, 10, 7], [4, 4, 5], 2, 0.1, [0, 0, 0, 0.5], 1, 1, 0, 1];
+_leaves_p setDropInterval 0.035;
 
 // Start Film grain
 if (_debug) then {hint "Start filmgrain";};
@@ -144,14 +152,14 @@ _hndlFg ppEffectCommit 30;
 sleep 5;
 
 // chance of blowing soft hat off //
-if (isnil "_hatCheck") then {_hatCheck = true};
+if (isnil "_hatCheck") then {_hatCheck = false};
 if (_debug && _hatCheck) then {hint "Start hat off";};
 if (_hatCheck) then {
     [player,_debug] execvm "ROS\scripts\ROShatblowsoff.sqf";
 };
 
 // Is player wearing eye protection? //
-if (isnil "_eyewearCheck") then {_eyewearCheck = true; call ace_goggles_fnc_applyDustEffect;};
+if (isnil "_eyewearCheck") then {_eyewearCheck = false};
 if (_eyewearCheck) then {
     [_endtime,_hndlFg,_debug] execvm "ROS\scripts\ROShurt.sqf";
 };
@@ -292,7 +300,7 @@ sleep 5;
 if (_debug) then {hint "Start color correction";};
 _hndl1 = ppEffectCreate ["colorCorrections", 1550];
 _hndl1 ppEffectEnable true;
-_hndl1 ppEffectAdjust [0.6, 1, 0, [0.8, 0.7, 0.4, 0.3], [0.8, 0.7, 0.4, 0.4], [0.8, 0.7, 0.4, 0.3]];
+_hndl1 ppEffectAdjust [0.6, 1, 0, [0.8, 0.7, 0.5, 0.3], [0.8, 0.7, 0.5, 0.4], [0.8, 0.7, 0.5, 0.3]];
 _hndl1 ppEffectCommit 15;
 
 sleep 15;
@@ -338,9 +346,9 @@ sleep 5;
 // Modify Color correction and fog
 if (_debug) then {hint "Start CC modify fog";};
 _ccbright = 0.6;
-_ccColbl = [0.8, 0.7, 0.4, 0.2 + random 0.6];
-_ccColco = [0.6 + random 0.4, 0.7, 0.4, 0.2 + random 0.6];
-_ccColde = [0.6  + random 0.4, 0.7 , 0.4, 0.3 + random 0.5];
+_ccColbl = [0.8, 0.7, 0.5, 0.2 + random 0.6];
+_ccColco = [0.6 + random 0.4, 0.7, 0.5, 0.2 + random 0.6];
+_ccColde = [0.6  + random 0.4, 0.7 , 0.5, 0.3 + random 0.5];
 _hndl1 = ppEffectCreate ["colorCorrections", 1550];
 _hndl1 ppEffectEnable true;
 
@@ -353,14 +361,14 @@ While {time <= _endtime} do {
     };
     if (sunOrMoon < 0.5) then {
         _ccbright = 0.6;
-        _ccColbl = [0.4, 0.35, 0.2, 0.2 + random 0.6];
-        _ccColco = [0.3 + random 0.2, 0.35, 0.2, 0.2 + random 0.6];
-        _ccColde = [0.3  + random 0.2, 0.35, 0.2, 0.3 + random 0.5];
+        _ccColbl = [0.4, 0.35, 0.25, 0.2 + random 0.6];
+        _ccColco = [0.3 + random 0.2, 0.35, 0.25, 0.2 + random 0.6];
+        _ccColde = [0.3  + random 0.2, 0.35, 0.25, 0.3 + random 0.5];
     } else {
         _ccbright = 0.6;
-        _ccColbl = [0.8, 0.7, 0.4, 0.2 + random 0.6];
-        _ccColco = [0.6 + random 0.4, 0.7, 0.4, 0.2 + random 0.6];
-        _ccColde = [0.6  + random 0.4, 0.7 , 0.4, 0.3 + random 0.5];
+        _ccColbl = [0.8, 0.7, 0.5, 0.2 + random 0.6];
+        _ccColco = [0.6 + random 0.4, 0.7, 0.5, 0.2 + random 0.6];
+        _ccColde = [0.6  + random 0.4, 0.7 , 0.5, 0.3 + random 0.5];
     };
     _hndl1 ppEffectAdjust [_ccbright, 1, 0, _ccColbl, _ccColco, _ccColde];
     _hndl1 ppEffectCommit 2 + (floor random 3);
@@ -400,6 +408,15 @@ for "_i" from _density to 0 step -0.0001 do {
 };
 deleteVehicle _particles;
 
+// Remove leaves
+if (_debug) then {hint "Remove leaves and camshake"};
+deletevehicle _leaves_p;
+
+// Remove Film grain
+if (_debug) then {hint "Remove film grain"};
+_hndlFg ppEffectEnable false;
+ppEffectDestroy _hndlFg;
+
 // Reduce wind
 if (_debug) then {hint "Reduce wind"};
 _WindVectorX = wind select 0;
@@ -410,11 +427,6 @@ while {vectorMagnitude wind > vectorMagnitude _origwind} do {
     setWind [(_WindVectorX/_factor), (_WindVectorY/_factor), true];
     sleep 4;
 };
-
-// Remove Film grain
-if (_debug) then {hint "Remove film grain"};
-_hndlFg ppEffectEnable false;
-ppEffectDestroy _hndlFg;
 
 sleep 10;
 
@@ -430,10 +442,6 @@ sleep 15;
 // reset original sound volume
 if (_debug) then {hint "Reset original sound volume"};
 5 fadeSound _originalVolume;
-
-// Remove leaves
-if (_debug) then {hint "Remove leaves and camshake"};
-deletevehicle _leaves_p;
 
 // Remove color correction
 if (_debug) then {hint "Delete color correction"};

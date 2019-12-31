@@ -519,8 +519,8 @@ class CfgSounds
 
 	class fire
 	{
-		name = "fire"; // Display Name for editor
-		sound[] = {"\sounds\fire.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		name = "fire25"; // Display Name for editor
+		sound[] = {"\sounds\fire25.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
 		titles[]={}; //Do not use unless you know what you are doing!
 	};
 
