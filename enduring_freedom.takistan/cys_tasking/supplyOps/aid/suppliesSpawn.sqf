@@ -12,4 +12,4 @@ _water = "Land_WaterBottle_01_stack_F" createvehicle getMarkerPos "waterSpawn";
 sleep 0.1;
 _rice= "Land_FoodSacks_01_cargo_brown_idap_F" createvehicle getMarkerPos "riceSpawn";
 sleep 0.1;
-_grain= "Land_PaperBox_01_small_closed_white_med_F" createvehicle getMarkerPos "medSpawn";	
+_grain= "Land_PaperBox_01_small_stacked_F" createvehicle getMarkerPos "medSpawn";	
