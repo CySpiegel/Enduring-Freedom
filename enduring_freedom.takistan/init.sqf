@@ -1,5 +1,6 @@
 enableSaving [false,false];
 
+// Stuff
 ["CAManBase", "Init", {
 	params ["_entity"];
 	
