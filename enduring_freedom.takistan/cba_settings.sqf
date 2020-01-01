@@ -52,8 +52,8 @@ ace_parachute_hideAltimeter = true;
 // ACE Cook off
 force ace_cookoff_ammoCookoffDuration = 0.822828;
 force ace_cookoff_enable = false;
-force ace_cookoff_enableAmmobox = true;
-force ace_cookoff_enableAmmoCookoff = true;
+force ace_cookoff_enableAmmobox = false;
+force ace_cookoff_enableAmmoCookoff = false;
 force ace_cookoff_probabilityCoef = 0.676937;
 
 // ACE Explosives

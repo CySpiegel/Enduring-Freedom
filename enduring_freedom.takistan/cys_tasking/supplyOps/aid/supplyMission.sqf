@@ -60,7 +60,7 @@ sleep 0.1;
 _delete = nearestObjects [getMarkerPos "riceSpawn", ["Land_FoodSacks_01_cargo_brown_idap_F"], 50];
 {deleteVehicle _x;}foreach _delete;
 sleep 0.1;
-_delete = nearestObjects [getMarkerPos "medSpawn", ["Land_PaperBox_01_small_closed_white_med_F"], 50];
+_delete = nearestObjects [getMarkerPos "medSpawn", ["Land_PaperBox_01_small_stacked_F"], 50];
 {deleteVehicle _x;}foreach _delete;
 sleep 0.1;
 
@@ -77,7 +77,7 @@ sleep 0.1;
 _rice= "Land_FoodSacks_01_cargo_brown_idap_F" createvehicle getMarkerPos "riceSpawn";
 
 sleep 0.1;
-_grain= "Land_PaperBox_01_small_closed_white_med_F" createvehicle getMarkerPos "medSpawn";	
+_grain= "Land_PaperBox_01_small_stacked_F" createvehicle getMarkerPos "medSpawn";	
 
 
 //Check if supplies have been delivered
@@ -86,7 +86,7 @@ waitUntil {
 
     _obj = getMarkerPos supplyMarker nearobjects ["Land_WaterBottle_01_stack_F",30]; 
     _obj2 = getMarkerPos supplyMarker nearobjects ["Land_FoodSacks_01_cargo_brown_idap_F",30]; 
-    _obj3 = getMarkerPos supplyMarker nearobjects ["Land_PaperBox_01_small_closed_white_med_F",30]; 
+    _obj3 = getMarkerPos supplyMarker nearobjects ["Land_PaperBox_01_small_stacked_F",30]; 
     count _obj > 0 && count _obj2 > 0 && count _obj3 > 0
 
 };
@@ -95,6 +95,9 @@ sleep 5;
 
 //succeed the task
 ["supplyDrop", "SUCCEEDED",true] call BIS_fnc_taskSetState;
+
+[master, 0.5] remoteExec ["addCuratorPoints", 0, false];
+
 [getMarkerPos supplyMarker, [side player], -15] call ALIVE_fnc_updateSectorHostility;
 
 waitUntil { 
@@ -109,7 +112,7 @@ sleep 0.1;
 _delete = nearestObjects [getMarkerPos supplyMarker, ["Land_FoodSacks_01_cargo_brown_idap_F"], 50];
 {deleteVehicle _x;}foreach _delete;
 sleep 0.1;
-_delete = nearestObjects [getMarkerPos supplyMarker, ["Land_PaperBox_01_small_closed_white_med_F"], 50];
+_delete = nearestObjects [getMarkerPos supplyMarker, ["Land_PaperBox_01_small_stacked_F"], 50];
 {deleteVehicle _x;}foreach _delete;
 sleep 0.1;
 

@@ -1,5 +1,5 @@
 nul = [player] execVM "scripts\check.sqf";
-["InitializePlayer",[player]] call BIS_fnc_dynamicGroups;
+["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 
 if (!isServer && (player != player)) then { waitUntil {player == player}; waitUntil {time > 10}; };
 
@@ -47,6 +47,14 @@ if (!isServer && (player != player)) then { waitUntil {player == player}; waitUn
 
         _title = "<t size='1.2' color='#68a7b7' shadow='1'>Group Management</t><br/>";
         _text = format["%1<t>Press U to open Group Manager</t>",_title];
+
+        ["openSideSmall",0.4] call ALIVE_fnc_displayMenu;
+        ["setSideSmallText",_text] call ALIVE_fnc_displayMenu;
+
+        sleep 15;
+
+        _title = "<t size='1.2' color='#68a7b7' shadow='1'Sandsotrm Advisory</t><br/>";
+        _text = format["%1<t>Wear Eye Protection</t>",_title];
 
         ["openSideSmall",0.4] call ALIVE_fnc_displayMenu;
         ["setSideSmallText",_text] call ALIVE_fnc_displayMenu;

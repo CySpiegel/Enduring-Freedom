@@ -16,7 +16,7 @@ _null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
 _nop = [] execVM "radioNoFreq.sqf";
 
 //Sandstorm
-[1, 4, 150] execvm "ROS\scripts\ROS_Sandstorm_Scheduler.sqf";
+[1, 4, 645] execvm "ROS\scripts\ROS_Sandstorm_Scheduler.sqf";
 
 //Rest of init code
 #include "initMission.hpp"
