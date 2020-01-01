@@ -53,7 +53,7 @@ if (!isServer && (player != player)) then { waitUntil {player == player}; waitUn
 
         sleep 15;
 
-        _title = "<t size='1.2' color='#68a7b7' shadow='1'Sandsotrm Advisory</t><br/>";
+        _title = "<t size='1.2' color='#68a7b7' shadow='1'>Sandsotrm Advisory</t><br/>";
         _text = format["%1<t>Wear Eye Protection</t>",_title];
 
         ["openSideSmall",0.4] call ALIVE_fnc_displayMenu;
