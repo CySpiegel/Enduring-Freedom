@@ -38,7 +38,24 @@ wreckRemovalMinTime = 1200;
 wreckRemovalMaxTime = 7200;
 minPlayerDistance = 1000;
 
-
+class ACEX_Fortify_Presets {
+    class ASO_Fortify_Objects {
+        objects[] = {
+            {"Land_BagFence_Round_F", 5},
+            {"Land_BagFence_Short_F", 5},
+            {"Land_BagFence_Long_F", 10},
+            {"Land_Plank_01_4m_F", 10},
+            {"Land_BagBunker_Small_F", 25},
+            {"Land_HBarrierTower_F", 100},
+            {"Land_HBarrierWall4_F", 25},
+            {"Land_HBarrierWall_corner_F", 25},
+            {"Land_HBarrier_1_F", 5},
+            {"Land_BagBunker_Tower_F", 50},
+            {"Land_BagBunker_Large_F", 100},
+            {"Land_Cargo_Patrol_V1_F", 100}
+        };
+    };
+};
 
 class CfgFunctions
 {
@@ -449,8 +466,8 @@ class CfgSounds
 
 	class fire45
 	{
-		name = "fire45"; // Display Name for editor
-		sound[] = {"\sounds\fire45.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
+		name = "fire15"; // Display Name for editor
+		sound[] = {"\sounds\fire15.ogg", 1, 1.0, 45}; //Location of sound, bear in mind it will only find locations WITHIN the mission!
 		titles[]={}; //Do not use unless you know what you are doing!
 	};
 
