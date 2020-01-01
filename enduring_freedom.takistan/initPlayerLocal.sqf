@@ -1,7 +1,3 @@
-nul = [player] execVM "scripts\check.sqf";
-["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
-
-
 ["acex_fortify_objectPlaced", {
 	[ALiVE_SYS_LOGISTICS, "updateObject", [(_this select 2)]] call ALIVE_fnc_logistics;
 	["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
@@ -18,7 +14,10 @@ _action = ["ASO_Logistics_Update", "Save Position", "", {
 }, {true}] call ace_interact_menu_fnc_createAction;
 ["Reammobox_F", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
+["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 
+
+nul = [player] execVM "scripts\check.sqf";
 if (!isServer && (player != player)) then { waitUntil {player == player}; waitUntil {time > 10}; };
 
 [] spawn {

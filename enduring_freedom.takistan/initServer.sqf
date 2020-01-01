@@ -1,14 +1,3 @@
-["Initialize", [true]] call BIS_fnc_dynamicGroups; 
-
-addMissionEventHandler ["HandleDisconnect",
-{
-	[(_this select 0)] spawn 
-	{
-		sleep 5;
-		deleteVehicle (_this select 0);
-	};
-}];
-
 _budget = "ACE_fortify_budget" call AliVE_fnc_ProfileNameSpaceLoad;
 _objects = ["ASO_Fortify_Objects"] call acex_fortify_fnc_getPlaceableSet;
 
@@ -39,3 +28,14 @@ private _aceFortifyObjectsCleaned = [];
 		};
 	};
 } forEach _objects;
+
+["Initialize", [true]] call BIS_fnc_dynamicGroups; 
+
+addMissionEventHandler ["HandleDisconnect",
+{
+	[(_this select 0)] spawn 
+	{
+		sleep 5;
+		deleteVehicle (_this select 0);
+	};
+}];

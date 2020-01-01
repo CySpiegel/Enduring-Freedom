@@ -1,9 +1,4 @@
 enableSaving [false,false];
-#ifndef execNow
-#define execNow call compile preprocessfilelinenumbers
-#endif
-
-["ALiVE | Enduring Freedom - Executing init.sqf..."] call ALiVE_fnc_Dump;
 
 ["CAManBase", "Init", {
 	params ["_entity"];
@@ -17,7 +12,7 @@ enableSaving [false,false];
 		if (_sideUnit isEqualTo sideUnknown) exitWith {};
 
 		_budget = switch(_sideUnit) do {
-			case west: { -50 };
+			case west: { 0 };
 			case east: { 50 };
 			case resistance: { 50 };
 			case civilian: {
@@ -31,18 +26,14 @@ enableSaving [false,false];
 		[west, _budget, (_sideUnit isEqualTo civilian)] call acex_fortify_fnc_updateBudget;
 		["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
 	}];
+
 }] call CBA_fnc_addClassEventHandler;
 
-// Enable Placed objects to be save to database.
-if (hasInterface) then {
-    ["acex_fortify_objectPlaced", {
-        [ALIVE_SYS_LOGISTICS, "updateObject", [(_this select 2)]] call ALIVE_fnc_logistics;
-    }] call CBA_fnc_addEventHandler;
+#ifndef execNow
+#define execNow call compile preprocessfilelinenumbers
+#endif
 
-    ["acex_fortify_objectDeleted", {
-        [ALIVE_SYS_LOGISTICS, "removeObject", [(_this select 2)]] call ALIVE_fnc_logistics;
-    }] call CBA_fnc_addEventHandler;
-};
+["ALiVE | Enduring Freedom - Executing init.sqf..."] call ALiVE_fnc_Dump;
 
 //Disable Vcom on vehicles
 [{{Driver _x setvariable ["NOAI",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;
