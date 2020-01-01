@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=892;
+		nextID=904;
 	};
 	class Camera
 	{
 		pos[]={8257.3291,328.63821,1731.0277};
-		dir[]={-0.51478332,-0.23697235,0.82406396};
-		up[]={-0.1256173,0.97148621,0.20108387};
-		aside[]={0.84825313,5.8596197e-007,0.52989101};
+		dir[]={-0.95254576,-0.076263137,0.29509374};
+		up[]={-0.072988555,0.99707687,0.022609038};
+		aside[]={0.29596922,2.4817564e-007,0.95536554};
 	};
 };
 binarizationWanted=0;
@@ -35176,25 +35176,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="js_jc_fa18_complexStartup";
-							expression="_this setVariable ['js_jc_fa18_complexStartup', _value];";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"BOOL"
-										};
-									};
-									value=1;
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="ttt_servicemenu";
 							expression="_this setVariable ['ServiceMenu', _value]; if (!_value) then { _this animate ['service_menu_switch', 1, true]; };";
 							class Value
@@ -35209,6 +35190,25 @@ class Mission
 										};
 									};
 									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="js_jc_fa18_complexStartup";
+							expression="_this setVariable ['js_jc_fa18_complexStartup', _value];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=1;
 								};
 							};
 						};
@@ -35238,25 +35238,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="js_jc_fa18_complexStartup";
-							expression="_this setVariable ['js_jc_fa18_complexStartup', _value];";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"BOOL"
-										};
-									};
-									value=1;
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="ttt_servicemenu";
 							expression="_this setVariable ['ServiceMenu', _value]; if (!_value) then { _this animate ['service_menu_switch', 1, true]; };";
 							class Value
@@ -35271,6 +35252,25 @@ class Mission
 										};
 									};
 									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="js_jc_fa18_complexStartup";
+							expression="_this setVariable ['js_jc_fa18_complexStartup', _value];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=1;
 								};
 							};
 						};
@@ -58107,7 +58107,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8114.2998,299.06339,1988.2638};
-				angles[]={-0,2.5246034,0};
+				angles[]={0,2.5246034,0};
 			};
 			side="Empty";
 			flags=4;
@@ -58123,7 +58123,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8135.5786,299.06339,1999.4907};
-				angles[]={-0,2.6260853,0};
+				angles[]={0,2.6260853,0};
 			};
 			side="Empty";
 			flags=4;
@@ -58226,8 +58226,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -58236,10 +58236,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="GreekHead_A3_14";
+									value=0;
 								};
 							};
 						};
@@ -58283,8 +58283,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -58293,10 +58293,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="GreekHead_A3_14";
 								};
 							};
 						};
@@ -59135,7 +59135,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[{{Driver _x setvariable [""NOAI"",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;";
+							value="";
 						};
 					};
 				};
@@ -59334,7 +59334,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8242.1973,311.40607,2074.5884};
-						angles[]={0,1.8885673,-0};
+						angles[]={0,1.8885673,0};
 					};
 					side="West";
 					flags=7;
@@ -59729,7 +59729,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[{{Driver _x setvariable [""NOAI"",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;";
+							value="";
 						};
 					};
 				};

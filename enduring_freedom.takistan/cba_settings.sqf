@@ -518,3 +518,7 @@ STHud_Settings_RemoveDeadViaProximity = true;
 STHud_Settings_SquadBar = false;
 STHud_Settings_TextShadow = 1;
 STHud_Settings_UnconsciousFadeEnabled = true;
+
+// TacSalmon Buttstroke
+force Salmon_bs_ff = false;
+force Salmon_bs_rd = true;
