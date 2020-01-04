@@ -18,6 +18,7 @@ vaa_arsenal = isClass(configfile >> "CfgPatches" >> "vaa_arsenal");
 bloodLight = isClass(configfile >> "CfgPatches" >> "BloodlustLITE_Auto");
 BloodLust = isClass(configfile >> "CfgPatches" >> "BloodSplatter");
 tacSwap = isClass(configfile >> "CfgPatches" >> "PH_TacSwap");
+DisableStamina = isClass(configfile >> "CfgPatches" >> "DisableStamina");
 
 
 sleep 0.5;
@@ -141,7 +142,14 @@ while {!addonclear} do
 	};
 	sleep 0.25;
 
-
+	if (DisableStamina) then 
+	{
+		hintc "***ADDON DISALLOWED***\n\DisableStamina\n\nPlease disable this if you wish to this mission.\n\nREASON: Cheating";
+		player sidechat "***ADDON DISALLOWED***\n\DisableStamina\n\nPlease disable this if you wish to this mission.\n\nREASON: Cheating";
+		[playerName, "***ADDON DISALLOWED*** DisableStamina     Please disable this if you wish to this mission.  REASON: Cheating"] remoteExecCall ["BIS_fnc_log"];
+		naughty = true;
+	};
+	sleep 0.25;
 
 	if (naughty) then 
 	{
