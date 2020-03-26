@@ -180,11 +180,13 @@ ace_maptools_rotateModifierKey = 1;
 force force ace_medical_ai_enabledFor = 2;
 force force ace_medical_AIDamageThreshold = 1;
 force force ace_medical_bleedingCoefficient = 0.5;
-force force ace_medical_blood_bloodLifetime = 120;
+force force ace_medical_blood_bloodLifetime = 300;
 force force ace_medical_blood_enabledFor = 2;
 force force ace_medical_blood_maxBloodObjects = 200;
 force force ace_medical_fatalDamageSource = 0;
+ace_medical_feedback_bloodVolumeEffectType = 0;
 ace_medical_feedback_painEffectType = 2;
+ace_medical_fractureChance = 0.8;
 force force ace_medical_fractures = 2;
 force force ace_medical_gui_enableActions = 2;
 force force ace_medical_gui_enableMedicalMenu = 1;
@@ -195,17 +197,18 @@ force force ace_medical_ivFlowRate = 2.25;
 force force ace_medical_limping = 1;
 force force ace_medical_painCoefficient = 0.3;
 force force ace_medical_playerDamageThreshold = 3;
-force force ace_medical_spontaneousWakeUpChance = 0.1;
+force force ace_medical_spontaneousWakeUpChance = 0.15463;
 force force ace_medical_spontaneousWakeUpEpinephrineBoost = 1.3;
 force force ace_medical_statemachine_AIUnconsciousness = true;
 force force ace_medical_statemachine_cardiacArrestTime = 300;
 force force ace_medical_statemachine_fatalInjuriesAI = 0;
 force force ace_medical_statemachine_fatalInjuriesPlayer = 0;
-force force ace_medical_treatment_advancedBandages = true;
+force ace_medical_treatment_advancedBandages = 2;
 force force ace_medical_treatment_advancedDiagnose = true;
 force force ace_medical_treatment_advancedMedication = true;
 force force ace_medical_treatment_allowLitterCreation = false;
 force force ace_medical_treatment_allowSelfIV = 1;
+ace_medical_treatment_allowSelfPAK = 0;
 force force ace_medical_treatment_allowSelfStitch = 1;
 force force ace_medical_treatment_allowSharedEquipment = 0;
 force force ace_medical_treatment_clearTraumaAfterBandage = false;
@@ -221,11 +224,10 @@ force force ace_medical_treatment_locationsBoostTraining = true;
 force force ace_medical_treatment_locationSurgicalKit = 0;
 force force ace_medical_treatment_maxLitterObjects = 200;
 force force ace_medical_treatment_medicEpinephrine = 0;
+ace_medical_treatment_medicIV = 1;
 force force ace_medical_treatment_medicPAK = 2;
 force force ace_medical_treatment_medicSurgicalKit = 2;
 force force ace_medical_treatment_timeCoefficientPAK = 0.5;
-force force ace_medical_treatment_woundReopening = true;
-
 
 // ACE Name Tags
 ace_nametags_defaultNametagColor = [0.77,0.51,0.08,1];
@@ -415,16 +417,18 @@ acex_field_rations_hudShowLevel = 30;
 acex_field_rations_hudTransparency = -1;
 acex_field_rations_hudType = 0;
 force acex_field_rations_hungerSatiated = 1;
+acex_field_rations_terrainObjectActions = true;
 force acex_field_rations_thirstQuenched = 1;
 force force acex_field_rations_timeWithoutFood = 36;
 force force acex_field_rations_timeWithoutWater = 6;
+acex_field_rations_waterSourceActions = 2;
 
 // ACEX Fortify
 acex_fortify_settingHint = 2;
 
 // ACEX Headless
 force force acex_headless_delay = 9.94399;
-force force acex_headless_enabled = true;
+force force acex_headless_enabled = false;
 force force acex_headless_endMission = 0;
 force force acex_headless_log = false;
 force acex_headless_transferLoadout = 0;
@@ -523,21 +527,46 @@ cba_optics_usePipOptics = true;
 // CUP
 force CUP_Vehicles_PreventBarrelClip = false;
 
-// F/A-18
-force force js_jc_fa18_advancedStart = true;
-js_jc_fa18_atflirRequire = false;
-force force js_jc_fa18_canopyLoss = true;
-js_jc_fa18_cursorSensitivity = 2.5;
-js_jc_fa18_interactCursor = false;
-js_jc_fa18_interactionRadiusMod = 1;
-js_jc_fa18_showLabels = true;
+// LAMBS Danger
+lambs_danger_CQB_formations_COLUMN = false;
+lambs_danger_CQB_formations_DIAMOND = true;
+lambs_danger_CQB_formations_ECH LEFT = false;
+lambs_danger_CQB_formations_ECH RIGHT = false;
+lambs_danger_CQB_formations_FILE = true;
+lambs_danger_CQB_formations_LINE = false;
+lambs_danger_CQB_formations_STAG COLUMN = false;
+lambs_danger_CQB_formations_VEE = false;
+lambs_danger_CQB_formations_WEDGE = false;
+lambs_danger_CQB_range = 50;
+lambs_danger_debug_Drawing = false;
+lambs_danger_debug_FSM = false;
+lambs_danger_debug_FSM_civ = false;
+lambs_danger_debug_functions = false;
+lambs_danger_disableAIAutonomousManoeuvres = false;
+lambs_danger_disableAICallouts = false;
+lambs_danger_disableAIFleeing = false;
+lambs_danger_disableAIGestures = false;
+lambs_danger_disableAIHideFromTanksAndAircraft = false;
+lambs_danger_disableAIImediateAction = false;
+lambs_danger_disableAIPlayerGroup = false;
+lambs_danger_disableAIPlayerGroupReaction = false;
+lambs_danger_disableAIPlayerGroupSuppression = false;
+lambs_danger_minSuppression_range = 20;
+lambs_danger_panic_chance = 10;
+lambs_danger_radio_backpack = 2000;
+lambs_danger_radio_disabled = false;
+lambs_danger_radio_EAST = 500;
+lambs_danger_radio_GUER = 500;
+lambs_danger_radio_shout = 100;
+lambs_danger_radio_WEST = 500;
+lambs_danger_RenderExpectedDestination = false;
 
-// ITC Air
-itc_air_drop_force = false;
-itc_air_paveway_realism = false;
+// LAMBS Danger Eventhandlers
+lambs_eventhandlers_ExplosionEventHandlerEnabled = true;
+lambs_eventhandlers_ExplosionReactionTime = 9;
 
-// ITC Land
-ITC_LAND_CIWS = true;
+// LAMBS Danger WP
+lambs_wp_autoAddArtillery = false;
 
 // STUI Settings
 STGI_Settings_Enabled = true;
@@ -554,6 +583,31 @@ STHud_Settings_UnconsciousFadeEnabled = true;
 // TacSalmon Buttstroke
 force Salmon_bs_ff = false;
 force Salmon_bs_rd = true;
+
+// VET_Unflipping
+force vet_unflipping_require_serviceVehicle = false;
+force vet_unflipping_require_toolkit = false;
+force vet_unflipping_time = 5;
+force vet_unflipping_unit_man_limit = 7;
+force vet_unflipping_unit_mass_limit = 3000;
+force vet_unflipping_vehicle_mass_limit = 100000;
+
+// F/A-18
+force force js_jc_fa18_advancedStart = true;
+js_jc_fa18_atflirRequire = false;
+force force js_jc_fa18_canopyLoss = true;
+js_jc_fa18_cursorSensitivity = 2.5;
+js_jc_fa18_interactCursor = false;
+js_jc_fa18_interactionRadiusMod = 1;
+js_jc_fa18_showLabels = true;
+
+
+// ITC Air
+itc_air_drop_force = false;
+itc_air_paveway_realism = false;
+
+// ITC Land
+ITC_LAND_CIWS = true;
 
 // VCOM SETTINGS
 force VCM_ActivateAI = true;
@@ -585,11 +639,3 @@ force VCM_TURRETUNLOAD = true;
 force VCM_USECBASETTINGS = true;
 force VCM_WARNDELAY = 30;
 force VCM_WARNDIST = 1000;
-
-// VET_Unflipping
-force vet_unflipping_require_serviceVehicle = false;
-force vet_unflipping_require_toolkit = false;
-force vet_unflipping_time = 5;
-force vet_unflipping_unit_man_limit = 7;
-force vet_unflipping_unit_mass_limit = 3000;
-force vet_unflipping_vehicle_mass_limit = 100000;
