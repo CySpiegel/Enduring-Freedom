@@ -44,7 +44,7 @@ inCap = compile preprocessfilelinenumbers "scripts\inCap.sqf";
 _null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
 
 //Radio Net Programming.........//
-_nop = [] execVM "radioNoFreq.sqf";
+//_nop = [] execVM "radioNoFreq.sqf";
 
 //Sandstorm
 [1, 4, 645] execvm "ROS\scripts\ROS_Sandstorm_Scheduler.sqf";
