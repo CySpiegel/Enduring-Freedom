@@ -1,15 +1,14 @@
-// Hat blows off - by RickOShay
-// This script is called by ROSsandstorm v3.6
-// This script may only be used with ROSsandstorm
-// null = [this, false] execvm "ROS\scripts\ROShatblowsoff.sqf";
+// Requires ROS_Sandstorm v4.5 - Hat blows off - by RickOShay
+// This script is called by ROS_Sandstorm
+// Full credit must be given if used as is or in derivative work
+// This script is part of ROS_Sandstorm
+// nul = [this, false] execvm "ROS_Sandstorm\scripts\ROShatblowsoff.sqf";
 
 if (!hasInterface) exitWith {};
 if (vehicle player != player) exitWith {};
 
 params ["_unit","_debug"];
 
-// set variables for testting when ss not running
-if (SStormRunning) then {_debug = _this select 1};
 sleep 10 + random 5; // delay required to ensure inside check loop has started
 
 if (_debug) then {hint "Start hats off";};
@@ -43,20 +42,20 @@ if ((_HatFound1 or _HatFound2 or _HatFound3 or _HatFound4 or _HatFound5 or _Unit
 if (_HatFound1 or _HatFound2 or _HatFound3 or _HatFound4 or _HatFound5 or _UnitHat == "") exitWith {};
 
 // Is the wind strong enough if not exit - FOR FUTURE USE
-//_Windspeed = sqrt ((wind select 0) ^ 2 + ((wind select 1) ^ 2));
+//_Windspeed = sqrt ((wind select 0) ^ 2 + ((wind select 1) ^ 2)); // vectormagnitude
 //if (_Windspeed < 11 && _debug) then {hint format ["Wind too slow:%1 - exit",_Windspeed]; sleep 1;};
 //if (_Windspeed < 11) exitWith {};
 
 sleep 5 + random 5;
 
-//Chance of hat blowing off is 60 %
+//Chance of hat blowing off is 70 %
 _prob = random 1;
-if (_prob <= 0.4 && _debug) then {hint format ["Hat prob:%1",_prob]; sleep 1;};
-if (_prob <= 0.4) exitWith {};
+if (_prob <= 0.3 && _debug) then {hint format ["Hat prob:%1",_prob]; sleep 1;};
+if (_prob <= 0.3) exitWith {};
 
 // Is he inside then exit
-if (inBuilding && _debug) then {hint "Inside - exit"; sleep 1;};
-if (inVehicle or inBuilding) exitWith {};
+if (SS_inBuilding && _debug) then {hint "Inside - exit"; sleep 1;};
+if (SS_inVehicle or SS_inBuilding) exitWith {};
 
 _NewHat = _UnitHat;
 _initial_pos = [(getpos _unit select 0)+0.3, (getpos _unit select 1)+0.3, (getpos _unit select 2)+1.75];
