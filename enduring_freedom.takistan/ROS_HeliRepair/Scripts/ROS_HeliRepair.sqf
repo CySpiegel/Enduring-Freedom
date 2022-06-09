@@ -284,7 +284,10 @@ ROS_Repair_heli_fnc = {
 	// A3 / RHS
 	if ("RHS_MELB" in typeof _veh) then {_xoffSet =2.2;};
 	if ("RHS_AH64D" in typeof _veh or "Apache_AH1" in typeOf _veh) then {_xoffSet =3;};
+	if ("fza_ah64d_b2e" in typeof _veh or "Apache_AH1" in typeOf _veh) then {_xoffSet =3;};
 	if ("RHS_UH60M" in typeof _veh) then {_xoffSet =3;};
+	if ("vtx_UH60M" in typeof _veh) then {_xoffSet =3;};
+	if ("vtx_MH60M_DAP" in typeof _veh) then {_xoffSet =3;};
 	if ("B_Heli_Light" in typeof _veh) then {_xoffSet =2.1;};
 	if ("C_Heli_Light" in typeof _veh) then {_xoffSet =2;};
 	if ("I_C_Heli_Light" in typeof _veh) then {_xoffSet =2;};
