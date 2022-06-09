@@ -40,8 +40,8 @@ enableSaving [false,false];
 [{{Driver _x setvariable ["NOAI",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;
 
 
-inCap = compile preprocessfilelinenumbers "scripts\inCap.sqf";
-_null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
+//inCap = compile preprocessfilelinenumbers "scripts\inCap.sqf";
+//_null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
 
 //Radio Net Programming.........//
 //_nop = [] execVM "radioNoFreq.sqf";

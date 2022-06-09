@@ -299,6 +299,7 @@ ROS_Repair_plane_fnc = {
 	if ("B_Plane_CAS_01" in typeof _veh) then {_xoffSet =2.2;};
 	if ("B_Plane_Fighter_01" in typeof _veh) then {_xoffSet =2;};
 	if ("A10" in typeof _veh) then {_xoffSet =2.2;};
+	if ("USAF_A10" in typeof _veh) then {_xoffSet =2.2;};
 	if ("F22" in typeof _veh or "F23A" in typeof _veh or "F35" in typeof _veh or "F14" in typeof _veh or "F15" in typeof _veh or "F16" in typeof _veh or "F18" in typeof _veh or "FA18" in typeof _veh or "SU34" in typeof _veh or "FIR_AV8B" in typeof _veh or "JAS39" in typeof _veh) then {
 		_xoffSet =1.85;
 		_firstposp = _veh getPos [10, (getdir _veh)+70];
@@ -609,7 +610,7 @@ while {true} do {
 		_nearestPlane == objNull;
 	};
 
-	_nhangarObjects = nearestObjects [_npHeliPad,[
+	_nhangarObjects = nearestObjects [_npHeliPad,[ "Land_Airport_02_hangar_right_F_FIR", "Land_Airport_02_hangar_left_F_FIR",
 		"Land_vn_airport_02_hangar_left_f","Land_vn_airport_02_hangar_right_f","Land_Hangar_F","Land_TentHangar_V1_F","Land_Airport_01_hangar_F","Land_Ss_hangard","Land_Ss_hangar","Land_vn_airport_01_hangar_f","Land_vn_usaf_hangar_01","Land_vn_usaf_hangar_02","Land_vn_usaf_hangar_03"],30];
 
 	// Exit if plane too large and repair bay in hangar - rotate 180 - stop hangar block
