@@ -39,7 +39,7 @@ enableSaving [false,false];
 //Disable Vcom on vehicles
 [{{Driver _x setvariable ["NOAI",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;
 
-
+// Only turn on if server logging is turned off
 //inCap = compile preprocessfilelinenumbers "scripts\inCap.sqf";
 //_null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
 
@@ -88,3 +88,4 @@ _3dIcon_text = addMissionEventHandler ["Draw3D", {
         ];
     };   
 }];
+

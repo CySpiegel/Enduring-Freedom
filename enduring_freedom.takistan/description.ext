@@ -4,13 +4,9 @@ class Header
 {
 	gameType = COOP;
 	minPlayers = 1;
-	maxPlayers = 30;
+	maxPlayers = 20;
 	playerCountMultipleOf = 1;
 };
-
-
-//loads internal cba settings file
-//cba_settings_hasSettingsFile = 1;
 
 aiKills = 0;
 briefing = 1;
@@ -60,8 +56,12 @@ class ACEX_Fortify_Presets
     };
 };
 
+
+#include "ASORVS\menu.hpp"
+
 class CfgFunctions
 {
+	#include "ASORVS\cfgfunctions.hpp"
 	#include "KPCF\KPCF_functions.hpp"
 };
 
