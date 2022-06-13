@@ -10,8 +10,7 @@ if (str _exists == "true") exitWith
 
 sleep 1;
 //pick a random location. if you want more or less locations just add/subtract markers from this array (and the map)
-supplyMarker = [
-				"supplyMarker_1",
+supplyMarker = ["supplyMarker_1",
 				"supplyMarker_2",
 				"supplyMarker_3",
 				"supplyMarker_4",
@@ -90,8 +89,8 @@ sleep 5;
 //succeed the task
 ["supplyDrop", "SUCCEEDED",true] call BIS_fnc_taskSetState;
 [master, 0.5] remoteExec ["addCuratorPoints", 0, false];
-[getMarkerPos supplyMarker, [side player], -15] call ALIVE_fnc_updateSectorHostility;
-
+[getMarkerPos supplyMarker, [side player], -20] call ALIVE_fnc_updateSectorHostility;
+// Will add funds to the acex fortification system
 [west, 1000, false] call acex_fortify_fnc_updateBudget;
 
 
