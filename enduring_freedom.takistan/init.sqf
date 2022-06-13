@@ -3,9 +3,7 @@ enableSaving [false,false];
 // Stuff
 ["CAManBase", "Init", {
 	params ["_entity"];
-	
 	_entity setVariable ["side_unit", side _entity];
-
 	_entity addEventHandler ["Killed", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 
@@ -13,21 +11,20 @@ enableSaving [false,false];
 		if (_sideUnit isEqualTo sideUnknown) exitWith {};
 
 		_budget = switch(_sideUnit) do {
-			case west: { 0 };
-			case east: { 50 };
-			case resistance: { 50 };
+			case west: { -200 };
+			case east: { 10 };
+			case resistance: { 10 };
 			case civilian: {
-				if ((side _instigator) isEqualTo west) then { -200 } else { 0 }
+				if ((side _instigator) isEqualTo west) then { -100 } else { 0 }
 			};
 			default { 0 };
 		};
-		
+
 		if (_budget isEqualTo 0) exitWith {};
 
 		[west, _budget, (_sideUnit isEqualTo civilian)] call acex_fortify_fnc_updateBudget;
 		["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
 	}];
-
 }] call CBA_fnc_addClassEventHandler;
 
 #ifndef execNow
@@ -47,12 +44,12 @@ enableSaving [false,false];
 //_nop = [] execVM "radioNoFreq.sqf";
 
 //Sandstorm
-[1, 4, 265] execvm "ROS_Sandstorm\scripts\ROS_Sandstorm_Scheduler.sqf";
+[3, 8, 265] execvm "ROS_Sandstorm\scripts\ROS_Sandstorm_Scheduler.sqf";
 
 //Rest of init code
 #include "initMission.hpp"
 
-
+// Hovering 3D marker
 _3dIcon_text = addMissionEventHandler ["Draw3D", { 
     if ((repairTrailer distance player < 20) && ([repairTrailer, "VIEW", player] checkVisibility [eyePos repairTrailer, eyePos player]>0.3)) then { 
         private _position = getPos repairTrailer;     

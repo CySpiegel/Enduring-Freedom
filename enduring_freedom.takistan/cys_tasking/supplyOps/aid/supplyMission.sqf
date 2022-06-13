@@ -70,41 +70,36 @@ sleep 0.1;
 ["supplyDrop","container"] call BIS_fnc_taskSetType;
 
 //Spawn Supplies
-
 _water = "Land_WaterBottle_01_stack_F" createvehicle getMarkerPos "waterSpawn";
-
 sleep 0.1;
 _rice= "Land_FoodSacks_01_cargo_brown_idap_F" createvehicle getMarkerPos "riceSpawn";
-
 sleep 0.1;
 _grain= "Land_PaperBox_01_small_stacked_F" createvehicle getMarkerPos "medSpawn";	
 
 
 //Check if supplies have been delivered
-
 waitUntil {
-
     _obj = getMarkerPos supplyMarker nearobjects ["Land_WaterBottle_01_stack_F",30]; 
     _obj2 = getMarkerPos supplyMarker nearobjects ["Land_FoodSacks_01_cargo_brown_idap_F",30]; 
     _obj3 = getMarkerPos supplyMarker nearobjects ["Land_PaperBox_01_small_stacked_F",30]; 
-    count _obj > 0 && count _obj2 > 0 && count _obj3 > 0
-
+    count _obj > 0 && count _obj2 > 0 && count _obj3 > 0;
 };
 
 sleep 5;
 
 //succeed the task
 ["supplyDrop", "SUCCEEDED",true] call BIS_fnc_taskSetState;
-
 [master, 0.5] remoteExec ["addCuratorPoints", 0, false];
-
 [getMarkerPos supplyMarker, [side player], -15] call ALIVE_fnc_updateSectorHostility;
 
-waitUntil { 
-//this should wait until players are 100m away before despawning the objects, but I'm 99% sure it's wrong
-{getMarkerPos (supplyMarker) distance _x > 100 } count (playableUnits + switchableUnits) > 0
+[west, 1000, false] call acex_fortify_fnc_updateBudget;
 
+
+waitUntil { 
+	//this should wait until players are 100m away before despawning the objects, but I'm 99% sure it's wrong
+	{getMarkerPos (supplyMarker) distance _x > 100 } count (playableUnits + switchableUnits) > 0
 };
+
 sleep 0.1;
 _delete = nearestObjects [getMarkerPos supplyMarker, ["Land_WaterBottle_01_stack_F"], 50];
 {deleteVehicle _x;}foreach _delete;
