@@ -6,7 +6,7 @@ Players have the ability to build FOBs, outposts, and checkpoints if they so des
 
 This mission supports up to a maximum of 3 headless clients on the server and requires at minimum 1 headless client.
 
-ALiVE Database  s
+ALiVE Database  
 This mission is set up to use the ALiVE Database on alivemod.com
 Please set up an account on this website and configure your servers according to the documentation. This is needed to allow for database saving of the mission to save progress.
 
