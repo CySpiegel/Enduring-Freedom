@@ -85,20 +85,20 @@ _3dIcon_text = addMissionEventHandler ["Draw3D", {
         private _textAlign = 'center';  
         private _shadow = 2; 
         drawIcon3D [  
-        _texture,  
-        [1,1,1,1],  
-        _position,  
-        _width,   
-        _height,   
-        _angle,  
-        _text,  
-        _shadow,  
-        _textSize,  
-        _font,  
-        _textAlign,  
-        _drawSideArrows,  
-        _offsetX,  
-        _offsetY  
+            _texture,  
+            [1,1,1,1],  
+            _position,  
+            _width,   
+            _height,   
+            _angle,  
+            _text,  
+            _shadow,  
+            _textSize,  
+            _font,  
+            _textAlign,  
+            _drawSideArrows,  
+            _offsetX,  
+            _offsetY  
         ];
     };   
 }];

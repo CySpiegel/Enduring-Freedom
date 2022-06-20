@@ -12,8 +12,9 @@ _action = ["ASO_Logistics_Update", "Save Position", "", {
 	[ALiVE_SYS_LOGISTICS, "updateObject", [_target]] call ALiVE_fnc_logistics;
 	hintSilent "Position saved!";
 }, {true}] call ace_interact_menu_fnc_createAction;
-["Reammobox_F", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
+
+["Reammobox_F", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 ["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 
 
