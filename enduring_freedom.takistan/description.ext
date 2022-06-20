@@ -1,10 +1,16 @@
+
 #include "KPGUI\KPGUI_defines.hpp"
 #include "KPCF\ui\KPCF_dialog.hpp"
+#include "BRS\defines.hpp"
+#include "BRS\dialogs.hpp"
+//#include "bon_recruit_units\dialog\common.hpp"
+//#include "bon_recruit_units\dialog\recruitment.hpp"
+
 class Header
 {
 	gameType = COOP;
 	minPlayers = 1;
-	maxPlayers = 20;
+	maxPlayers = 35;
 	playerCountMultipleOf = 1;
 };
 

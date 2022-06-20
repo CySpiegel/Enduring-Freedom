@@ -1,3 +1,11 @@
+waitUntil {
+	!isNil "ALiVE_SYS_DATA_SOURCE";
+};
+
+if (ALiVE_SYS_DATA_SOURCE isEqualTo "pns") then {
+	3600 call ALiVE_fnc_AutoSave_PNS;
+};
+
 _budget = "ACE_fortify_budget" call AliVE_fnc_ProfileNameSpaceLoad;
 _objects = ["ASO_Fortify_Objects"] call acex_fortify_fnc_getPlaceableSet;
 

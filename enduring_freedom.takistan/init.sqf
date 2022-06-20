@@ -1,15 +1,17 @@
 enableSaving [false,false];
 
-// Stuff
+// Initialise the respawn system
+//null= [[West_Base],WEST,TRUE,40] execVM "BRS\BRS_launch.sqf";
+
+
+// Starts the earning and penelty systems for killing units
 ["CAManBase", "Init", {
 	params ["_entity"];
 	_entity setVariable ["side_unit", side _entity];
 	_entity addEventHandler ["Killed", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
-
 		_sideUnit = _unit getVariable ["side_unit", sideUnknown];
 		if (_sideUnit isEqualTo sideUnknown) exitWith {};
-
 		_budget = switch(_sideUnit) do {
 			case west: { -200 };
 			case east: { 10 };
