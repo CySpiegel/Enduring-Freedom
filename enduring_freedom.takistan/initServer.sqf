@@ -39,6 +39,7 @@ private _aceFortifyObjectsCleaned = [];
 	};
 } forEach _objects;
 
+// Code snip from alive wiki 
 // ["acex_fortify_objectPlaced", {
 //     [ALiVE_SYS_LOGISTICS, "updateObject", [(_this select 2)]] call ALIVE_fnc_logistics;
 //     }] call CBA_fnc_addEventHandler;
