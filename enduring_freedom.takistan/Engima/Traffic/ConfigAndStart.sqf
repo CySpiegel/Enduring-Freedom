@@ -5,8 +5,8 @@
  * See file Engima\Traffic\Documentation.txt for documentation and a full reference of 
  * how to customize and use Engima's Traffic.
  */
- 
- private ["_parameters"];
+
+private ["_parameters"];
 
 // Set traffic parameters.
 _parameters = [
