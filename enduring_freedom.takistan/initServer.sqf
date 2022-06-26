@@ -23,8 +23,6 @@ if (_budget isEqualType 0) then {
 _objects = [alive_sys_logistics, "allObjects"] call ALiVE_fnc_logistics;
 _aceFortifyObjects = ["ASO_Fortify_Objects"] call acex_fortify_fnc_getPlaceableSet;
 private _aceFortifyObjectsCleaned = [];
-
-
 {
 	_aceFortifyObjectsCleaned pushBack (_x select 0);
 } forEach _aceFortifyObjects;
@@ -52,8 +50,7 @@ private _aceFortifyObjectsCleaned = [];
 
 addMissionEventHandler ["HandleDisconnect",
 {
-	[(_this select 0)] spawn 
-	{
+	[(_this select 0)] spawn {
 		sleep 5;
 		deleteVehicle (_this select 0);
 	};
