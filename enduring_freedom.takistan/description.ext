@@ -3,8 +3,8 @@
 #include "KPCF\ui\KPCF_dialog.hpp"
 #include "BRS\defines.hpp"
 #include "BRS\dialogs.hpp"
-//#include "bon_recruit_units\dialog\common.hpp"
-//#include "bon_recruit_units\dialog\recruitment.hpp"
+#include "bon_recruit_units\dialog\common.hpp"
+#include "bon_recruit_units\dialog\recruitment.hpp"
 
 class Header
 {
