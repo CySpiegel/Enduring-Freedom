@@ -3,6 +3,7 @@ enableSaving [false,false];
 // Initialise the respawn system
 //null= [[West_Base],WEST,TRUE,40] execVM "BRS\BRS_launch.sqf";
 
+[] execVM "bon_recruit_units\init.sqf";
 
 // Starts the earning and penelty systems for killing units
 ["CAManBase", "Init", {
@@ -101,8 +102,8 @@ if(isServer) then {
 [{{Driver _x setvariable ["NOAI",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;
 
 // Only turn on if server logging is turned off
-//inCap = compile preprocessfilelinenumbers "scripts\inCap.sqf";
-//_null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
+inCap = compile preprocessfilelinenumbers "scripts\inCap.sqf";
+_null = [true, true, false, 70, 20] execvm "scripts\injured.sqf";
 
 //Radio Net Programming.........//
 //_nop = [] execVM "radioNoFreq.sqf";

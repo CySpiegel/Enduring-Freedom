@@ -1,5 +1,15 @@
 objNull spawn {
-	private _approvedRefundList = ["B_Truck_01_box_F","rhsusf_m1240a1_m2_uik_usarmy_d",   
+	private _approvedRefundList = ["rhsusf_m1151_mk19_v2_usarmy_d",  
+									"rhsusf_m1151_m2_v2_usarmy_d",  
+									"rhsusf_M1220_MK19_usarmy_d",  
+									"rhsusf_M1230_M2_usarmy_d",  
+									"rhsusf_M1237_MK19_usarmy_d",  
+									"rhsusf_M1237_M2_usarmy_d",  
+									"rhsusf_M1083A1P2_B_D_fmtv_usarmy",  
+									"rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy",  
+									"rhsusf_m1165a1_gmv_m2_m240_socom_d",  
+									"rhsusf_m1165a1_gmv_mk19_m240_socom_d",  
+									"vtx_UH60M_MEDEVAC","B_Truck_01_box_F","rhsusf_m1240a1_m2_uik_usarmy_d",
 									"rhsusf_m1a2sep1tuskiid_usarmy",   
 									"rhsusf_M977A4_REPAIR_BKIT_usarmy_d",   
 									"rhsusf_M978A4_BKIT_usarmy_d",   
@@ -14,19 +24,8 @@ objNull spawn {
 									"B_Quadbike_01_F", 
 									"fza_ah64d_b2e", 
 									"vtx_UH60M",
-									"vtx_MH60M_DAP","kyo_MH47E_HC",
-									"USAF_A10",
-									"USAF_F22",
-									"USAF_F22_EWP_AA",
-									"USAF_F22_EWP_AG",
-									"USAF_F22_Heavy",
-									"USAF_F35A",
-									"USAF_F35A_LIGHT",
-									"USAF_F35A_STEALTH",
-									"JS_JC_FA18E",
-									"JS_JC_FA18F",
-									"B_Plane_Fighter_01_F",
-									"B_Plane_Fighter_01_Stealth_F"];
+									"vtx_MH60M_DAP",
+									"kyo_MH47E_HC"];
 
 	private _doNotDdeleteObject = "PortableHelipadLight_01_green_F";
 
