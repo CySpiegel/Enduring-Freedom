@@ -3,7 +3,10 @@ enableSaving [false,false];
 // Initialise the respawn system
 //null= [[West_Base],WEST,TRUE,40] execVM "BRS\BRS_launch.sqf";
 
+// Scripts
 [] execVM "bon_recruit_units\init.sqf";
+//0 = [] execvm "scripts\tpw_core.sqf";
+call compile preprocessFileLineNumbers "removeTasks.sqf";
 
 // Starts the earning and penelty systems for killing units
 ["CAManBase", "Init", {

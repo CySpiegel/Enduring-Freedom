@@ -4,7 +4,7 @@ switch (_selection) do
 {
 	case 0:
 		{
-			//Air Operations
+			//Air Strike Operations
 			[[],"cys_tasking\airOps\missionAir.sqf"] remoteExec ["BIS_fnc_execVM", 0]; 
 		};
 	case 1:

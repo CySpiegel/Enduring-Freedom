@@ -19,6 +19,7 @@ _action = ["ASO_Logistics_Update", "Save Position", "", {
 
 
 nul = [player] execVM "scripts\check.sqf";
+//0 = [10,10,500,50,60] execvm "scripts\tpw_animals.sqf";
 
 if (!isServer && (player != player)) then { 
     waitUntil {player == player}; 
