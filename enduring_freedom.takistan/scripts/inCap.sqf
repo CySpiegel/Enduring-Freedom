@@ -36,8 +36,7 @@ _unitdir = getDir _unit;
 _nearestunits = _unit nearEntities ["CAManBase", 50];
 _dragger = selectRandom (_nearestunits - (playableUnits + switchableUnits + [_unit]));
 ///////////////////Find dragger loop////////////////////////////////////////
-while {true}                  
-do {
+while {true} do {
     //hint "searching dragger...";
     _nearestunits = _unit nearEntities ["CAManBase", 50];
     _dragger = selectRandom (_nearestunits - (playableUnits + switchableUnits + [_unit]));
