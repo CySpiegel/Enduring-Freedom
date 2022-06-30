@@ -42,8 +42,8 @@ objNull spawn {
 			if (_vehicle in _approvedRefundList) then {
 				[west, 100, false] call acex_fortify_fnc_updateBudget;
 			} else {
-				hintSilent "Vehicle Not Approved for Refunded, but we will scrap it"
-				[west, 20, false] call acex_fortify_fnc_updateBudget
+				hintSilent "Vehicle Not Approved for Refunded, but we will scrap it";
+				[west, 20, false] call acex_fortify_fnc_updateBudget;
 			}
 		}
 	}
