@@ -61,7 +61,7 @@ if(isServer) then {
     GR_MAX_KIN_DIST = 10000;
 
     // Chance that a player murdering a civilian will get an "apology" mission
-    GR_MISSION_CHANCE = 100;
+    GR_MISSION_CHANCE = ["cys_guilt_chance", 10] call BIS_fnc_getParamValue;
 
     // Delay in seconds after death until player is notified of body delivery mission
     GR_TASK_MIN_DELAY=10;

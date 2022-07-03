@@ -23,4 +23,10 @@ class Params {
 		values[] = {0,5,10,15,20,100};
 		default = 5;
 	};
+	class cys_guilt_chance {
+		title = "Guilt Mission Chance";
+		texts[] = {"Disabeld","10%","20%", "30%", "40%", "50%","60%","70%", "80%", "90%", "100%"};
+		values[] = {0,10,20,30,40,50,60,70,80,90,100};
+		default = 5;
+	};
 };
