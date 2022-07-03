@@ -115,7 +115,8 @@ if(isServer) then {
 [3, 8, 265] execvm "ROS_Sandstorm\scripts\ROS_Sandstorm_Scheduler.sqf";
 
 //Rest of init code
-#include "initMission.hpp"
+#include "initmission.hpp"
+
 
 // Hovering 3D marker
 _3dIcon_text = addMissionEventHandler ["Draw3D", { 
@@ -154,3 +155,5 @@ _3dIcon_text = addMissionEventHandler ["Draw3D", {
     };   
 }];
 
+_initialBudget = ["cys_budget_start", 1000] call BIS_fnc_getParamValue;
+[west, _initialBudget, false] call acex_fortify_fnc_updateBudget;

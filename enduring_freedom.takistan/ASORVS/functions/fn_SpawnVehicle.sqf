@@ -30,7 +30,8 @@ objNull spawn {
 	private _doNotDdeleteObject = "PortableHelipadLight_01_green_F";
 
 	private _currentBudget = [west] call ace_fortify_fnc_getBudget;
-	private _vehicleCost = 100;
+	private _vehicleCost = ["cys_vechile_cost", 100] call BIS_fnc_getParamValue;
+	
 
 	sleep 2; //wait for client to be able to check vehicles positions properly again.
 	_somedeleted =false;
@@ -40,7 +41,7 @@ objNull spawn {
 				deleteVehicle _x;
 			_somedeleted =true;
 			if (_vehicle in _approvedRefundList) then {
-				[west, 100, false] call acex_fortify_fnc_updateBudget;
+				[west, _vehicleCost, false] call acex_fortify_fnc_updateBudget;
 			} else {
 				hintSilent "Vehicle Not Approved for Refunded, but we will scrap it";
 				[west, 20, false] call acex_fortify_fnc_updateBudget;
@@ -57,7 +58,8 @@ objNull spawn {
 		_veh = createVehicle [ASORVS_CurrentVehicle, ASORVS_VehicleSpawnPos, [], 0, "CAN_COLLIDE"];
 		_veh setVehicleLock "UNLOCKED";
 		_veh setDir ASORVS_VehicleSpawnDir;
-		[west, -100, false] call acex_fortify_fnc_updateBudget;
+		_speding = _vehicleCost * -1;
+		[west, _speding, false] call acex_fortify_fnc_updateBudget;
 	} else {
 		hintSilent "Not enough funds in the budget";
 	}
