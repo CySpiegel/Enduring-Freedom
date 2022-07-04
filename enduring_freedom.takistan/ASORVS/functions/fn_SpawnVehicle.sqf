@@ -36,7 +36,8 @@ objNull spawn {
 									"JS_JC_FA18E",
 									"JS_JC_FA18F",
 									"B_Plane_Fighter_01_F",
-									"B_Plane_Fighter_01_Stealth_F"];
+									"B_Plane_Fighter_01_Stealth_F",
+									"fza_ah64d_b2e"];
 
 	private _doNotDdeleteObject = "PortableHelipadLight_01_green_F";
 
