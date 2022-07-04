@@ -21,11 +21,22 @@ objNull spawn {
 									"RHS_M2A3_BUSKIII",   
 									"CFP_B_USMC_HMMWV_Ambulance_DES_01",   
 									"rhsusf_mrzr4_d",   
-									"B_Quadbike_01_F", 
-									"fza_ah64d_b2e", 
+									"B_Quadbike_01_F",
 									"vtx_UH60M",
 									"vtx_MH60M_DAP",
-									"kyo_MH47E_HC"];
+									"kyo_MH47E_HC",
+									"USAF_A10",
+									"USAF_F22",
+									"USAF_F22_EWP_AA",
+									"USAF_F22_EWP_AG",
+									"USAF_F22_Heavy",
+									"USAF_F35A",
+									"USAF_F35A_LIGHT",
+									"USAF_F35A_STEALTH",
+									"JS_JC_FA18E",
+									"JS_JC_FA18F",
+									"B_Plane_Fighter_01_F",
+									"B_Plane_Fighter_01_Stealth_F"];
 
 	private _doNotDdeleteObject = "PortableHelipadLight_01_green_F";
 
