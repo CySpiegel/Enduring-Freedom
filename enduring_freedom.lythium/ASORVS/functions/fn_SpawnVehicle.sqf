@@ -9,8 +9,7 @@ objNull spawn {
 									"rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy",  
 									"rhsusf_m1165a1_gmv_m2_m240_socom_d",  
 									"rhsusf_m1165a1_gmv_mk19_m240_socom_d",  
-									"vtx_UH60M_MEDEVAC","B_Truck_01_box_F",
-									"rhsusf_m1240a1_m2_uik_usarmy_d",
+									"vtx_UH60M_MEDEVAC","B_Truck_01_box_F","rhsusf_m1240a1_m2_uik_usarmy_d",
 									"rhsusf_m1a2sep1tuskiid_usarmy",   
 									"rhsusf_M977A4_REPAIR_BKIT_usarmy_d",   
 									"rhsusf_M978A4_BKIT_usarmy_d",   
@@ -38,13 +37,16 @@ objNull spawn {
 									"JS_JC_FA18F",
 									"B_Plane_Fighter_01_F",
 									"B_Plane_Fighter_01_Stealth_F",
-									"fza_ah64d_b2e"];
+									"fza_ah64d_b2e",
+									"RHS_MELB_MH6M", 
+									"RHS_MELB_AH6M"];
 
 	private _doNotDdeleteObject = "PortableHelipadLight_01_green_F";
 
 	private _currentBudget = [west] call ace_fortify_fnc_getBudget;
 	private _vehicleCost = ["cys_vechile_cost", 100] call BIS_fnc_getParamValue;
-	
+	private _allowedVehicleRefunWorth = ["cys_vechile_refund_allowed", 100] call BIS_fnc_getParamValue;
+	private _scrapVehicleWorth = ["cys_vechile_refund_scrap", 100] call BIS_fnc_getParamValue;
 
 	sleep 2; //wait for client to be able to check vehicles positions properly again.
 	_somedeleted =false;
@@ -54,10 +56,10 @@ objNull spawn {
 				deleteVehicle _x;
 			_somedeleted =true;
 			if (_vehicle in _approvedRefundList) then {
-				[west, _vehicleCost, false] call acex_fortify_fnc_updateBudget;
+				[west, _allowedVehicleRefunWorth, false] call acex_fortify_fnc_updateBudget;
 			} else {
 				hintSilent "Vehicle Not Approved for Refunded, but we will scrap it";
-				[west, 20, false] call acex_fortify_fnc_updateBudget;
+				[west, _scrapVehicleWorth, false] call acex_fortify_fnc_updateBudget;
 			}
 		}
 	}

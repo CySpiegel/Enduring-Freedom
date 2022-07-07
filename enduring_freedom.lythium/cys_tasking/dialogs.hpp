@@ -24,7 +24,7 @@ class cys_tasking
     {
       idc = 1200;
 
-      text = "pics\TOC\ts_sat_4.jpg";
+      text = "cys_tasking\images\ts_sat_4.jpg";
       x = 0.257187 * safezoneW + safezoneX;
       y = 0.206 * safezoneH + safezoneY;
       w = 0.242812 * safezoneW;
