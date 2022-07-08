@@ -1,11 +1,26 @@
 class Params {
-	class Daytime
+	class cys_save_interval
+	{
+		title = "Server Auto Save";
+		texts[] = {"Disable Auto Save", "Every 1 Hour", "Every 2 Hours", "Every 3 Hours"};
+		values[] = {0, 3600, 7200, 10800};
+		default = 3600;
+	};
+	class cys_Daytime
 	{
 		title = "Mission Start Time";
-		texts[] = {"Morning","Day","Evening","Night"};
-		values[] = {6,12,18,0};
-		default = 6;
-		function = "BIS_fnc_paramDaytime";
+		texts[] = {"Use Saved Mission Time","Morning","Day","Evening","Night"};
+		values[] = {-1,6,12,18,0};
+		default = -1;
+		//function = "BIS_fnc_paramDaytime";
+	};
+	class cys_timeMultiplier
+	{
+		title = "Time Acceleration";
+		texts[] = {"Normal 1:1","2x","4x"};
+		values[] = {1,2,4};
+		default = 1;
+		function = "BIS_fnc_paramTimeAcceleration";
 	};
 	class cys_budget_group {
 		title = "Budget System Settings";
@@ -61,5 +76,11 @@ class Params {
 		texts[] = {"Disabeld","10%","20%", "30%", "40%", "50%","60%","70%", "80%", "90%", "100%"};
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		default = 30;
+	};
+		class cys_ambiant_driving {
+		title = "Ambiant Drivers Limit";
+		texts[] = {"Disabeld","5","10","15","20"};
+		values[] = {0,5,10,15,20};
+		default = 10;
 	};
 };

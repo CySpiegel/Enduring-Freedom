@@ -2,8 +2,11 @@ waitUntil {
 	!isNil "ALiVE_SYS_DATA_SOURCE";
 };
 
-if (ALiVE_SYS_DATA_SOURCE isEqualTo "pns") then {
-	3600 call ALiVE_fnc_AutoSave_PNS;
+private _saveInterval = ["cys_save_interval", 3600] call BIS_fnc_getParamValue;
+if (_saveInterval > 0) then {
+	if (ALiVE_SYS_DATA_SOURCE isEqualTo "pns") then {
+		_saveInterval call ALiVE_fnc_AutoSave_PNS;
+	};
 };
 
 _budget = "ACE_fortify_budget" call AliVE_fnc_ProfileNameSpaceLoad;

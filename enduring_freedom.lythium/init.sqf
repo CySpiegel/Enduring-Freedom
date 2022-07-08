@@ -8,6 +8,12 @@ enableSaving [false,false];
 //0 = [] execvm "scripts\tpw_core.sqf";
 call compile preprocessFileLineNumbers "removeTasks.sqf";
 
+private _setDaytime = ["cys_Daytime", -1] call BIS_fnc_getParamValue;
+if (_setDaytime != -1) then {
+    setTimeMultiplier _setDaytime;
+}
+
+
 // Starts the earning and penelty systems for killing units
 ["CAManBase", "Init", {
 	params ["_entity"];
