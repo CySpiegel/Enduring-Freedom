@@ -9,9 +9,9 @@ enableSaving [false,false];
 call compile preprocessFileLineNumbers "removeTasks.sqf";
 
 private _setDaytime = ["cys_Daytime", -1] call BIS_fnc_getParamValue;
-if (_setDaytime != -1) then {
-    setTimeMultiplier _setDaytime;
-}
+if (_setDaytime > -1) then {
+    _setDaytime call  BIS_fnc_paramDaytime;
+};
 
 
 // Starts the earning and penelty systems for killing units

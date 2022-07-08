@@ -8,11 +8,13 @@
 
 private ["_parameters"];
 
+private _vehicleLimit = ["cys_ambiant_driving", 1] call BIS_fnc_getParamValue;
+
 // Set traffic parameters.
 _parameters = [
 	["SIDE", civilian],
 	["VEHICLES", ["CFP_C_ASIA_Datsun_Pickup_01", "CFP_C_ASIA_Land_Rover_01", "CFP_C_ASIA_MB_4WD_01", "CFP_C_ASIA_Offroad_01", "CFP_C_ASIA_Praga_V3S_01", "CFP_C_ASIA_Skoda_Octavia_01", "CFP_C_ASIA_Ural_01", "CFP_C_ASIA_UAZ_01", "CFP_C_ASIA_SUV_01", "d3s_zil_130_04", "d3s_zil_130_05", "d3s_zil_131_4", "d3s_zil_130_07", "d3s_actros_14_giga", "d3s_maz_7429"]],
-	["VEHICLES_COUNT", 10],
+	["VEHICLES_COUNT", _vehicleLimit],
 	["MIN_SPAWN_DISTANCE", 800],
 	["MAX_SPAWN_DISTANCE", 2500],
 	["MIN_SKILL", 0.4],
@@ -23,8 +25,9 @@ _parameters = [
 ];
 
 // Start an instance of the traffic
-_parameters spawn ENGIMA_TRAFFIC_StartTraffic;
-
+if (_vehicleLimit > 0) then {
+	_parameters spawn ENGIMA_TRAFFIC_StartTraffic;
+};
 
 
 //MIDDLE EASTERN PRESET

@@ -27,7 +27,7 @@ _parameters = [
 // Start an instance of the traffic
 if (_vehicleLimit > 0) then {
 	_parameters spawn ENGIMA_TRAFFIC_StartTraffic;
-} else {}
+};
 
 
 //MIDDLE EASTERN PRESET

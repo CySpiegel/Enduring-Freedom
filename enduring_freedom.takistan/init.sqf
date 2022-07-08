@@ -8,6 +8,12 @@ enableSaving [false,false];
 //0 = [] execvm "scripts\tpw_core.sqf";
 call compile preprocessFileLineNumbers "removeTasks.sqf";
 
+private _setDaytime = ["cys_Daytime", -1] call BIS_fnc_getParamValue;
+if (_setDaytime > -1) then {
+    _setDaytime call  BIS_fnc_paramDaytime;
+};
+
+
 // Starts the earning and penelty systems for killing units
 ["CAManBase", "Init", {
 	params ["_entity"];
@@ -115,7 +121,7 @@ if(isServer) then {
 [3, 8, 265] execvm "ROS_Sandstorm\scripts\ROS_Sandstorm_Scheduler.sqf";
 
 //Rest of init code
-#include "initmission.hpp"
+//#include "initmission.hpp"
 
 
 // Hovering 3D marker
