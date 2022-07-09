@@ -45,6 +45,11 @@ call compile preprocessFileLineNumbers "Engima\Traffic\Init.sqf";
 #endif
 
 // Prison System initilization
+
+if (isServer) then {
+    [] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
+};
+
 if (isServer) then {
     ["ace_captiveStatusChanged", {
         params ["_unit", "_state", "_reason"];

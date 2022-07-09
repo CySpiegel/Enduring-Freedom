@@ -83,4 +83,11 @@ class Params {
 		values[] = {0,5,10,15,20};
 		default = 10;
 	};
+	class cys_traffic_headless {
+		title = "Ambiant Drivers Headless Client (only use if HC1 is connected)";
+		texts[] = {"Disabeld","Enabled";};
+		values[] = {0,1};
+		default = 0;
+	};
+	
 };

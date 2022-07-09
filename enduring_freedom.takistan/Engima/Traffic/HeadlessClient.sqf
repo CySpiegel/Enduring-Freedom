@@ -4,4 +4,9 @@
  * string ("").
  */
  
-Engima_Traffic_HeadlessClientName = "";
+private _useHeadless = ["cys_traffic_headless", 0] call BIS_fnc_getParamValue;
+if (_useHeadless > 0) then {
+	Engima_Traffic_HeadlessClientName = "HC1";
+} else {
+	Engima_Traffic_HeadlessClientName = "";
+}
