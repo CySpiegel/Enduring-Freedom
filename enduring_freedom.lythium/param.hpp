@@ -30,9 +30,9 @@ class Params {
 	};
 	class cys_budget_start {
 		title = "			Initial Budget";
-		texts[] = {"0", "100","500","1000","5000","10000","50000"};
+		texts[] = {"Used Saved Budget", "100","500","1000","5000","10000","50000"};
 		values[] = {1,100,500,1000,5000,10000,50000};
-		default = 10000;
+		default = 1;
 	};
 	class cys_vechile_cost {
 		title = "			Vehicle Cost";

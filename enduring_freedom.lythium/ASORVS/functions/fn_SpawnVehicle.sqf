@@ -79,8 +79,8 @@ objNull spawn {
 		removeBackpackGlobal _veh;
 		_veh setVehicleLock "UNLOCKED";
 		_veh setDir ASORVS_VehicleSpawnDir;
-		_speding = _vehicleCost * -1;
-		[west, _speding, false] call acex_fortify_fnc_updateBudget;
+		_spending = _vehicleCost * -1;
+		[west, _spending, false] call acex_fortify_fnc_updateBudget;
 		["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
 	} else {
 		hintSilent "Not enough funds in the budget";
