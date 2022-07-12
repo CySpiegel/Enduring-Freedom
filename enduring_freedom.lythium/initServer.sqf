@@ -2,11 +2,9 @@ waitUntil {
 	!isNil "ALiVE_SYS_DATA_SOURCE";
 };
 
-private _saveInterval = ["cys_save_interval", 3600] call BIS_fnc_getParamValue;
-if (_saveInterval > 0) then {
-	if (ALiVE_SYS_DATA_SOURCE isEqualTo "pns") then {
-		_saveInterval call ALiVE_fnc_AutoSave_PNS;
-	};
+private _saveInterval = ["cys_save_interval", -1] call BIS_fnc_getParamValue;
+if (ALiVE_SYS_DATA_SOURCE isEqualTo "pns") then {
+	_saveInterval call ALiVE_fnc_AutoSave_PNS;
 };
 
 _budget = "ACE_fortify_budget" call AliVE_fnc_ProfileNameSpaceLoad;
@@ -39,15 +37,6 @@ private _aceFortifyObjectsCleaned = [];
 		};
 	};
 } forEach _objects;
-
-// Code snip from alive wiki 
-// ["acex_fortify_objectPlaced", {
-//     [ALiVE_SYS_LOGISTICS, "updateObject", [(_this select 2)]] call ALIVE_fnc_logistics;
-//     }] call CBA_fnc_addEventHandler;
- 
-// ["acex_fortify_objectDeleted", {
-//     [ALiVE_SYS_LOGISTICS, "removeObject", [(_this select 2)]] call ALIVE_fnc_logistics;
-//     }] call CBA_fnc_addEventHandler;
 
 ["Initialize", [true]] call BIS_fnc_dynamicGroups; 
 

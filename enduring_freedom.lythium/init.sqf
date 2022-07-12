@@ -166,5 +166,12 @@ _3dIcon_text = addMissionEventHandler ["Draw3D", {
     };   
 }];
 
-_initialBudget = ["cys_budget_start", 1000] call BIS_fnc_getParamValue;
-[west, _initialBudget, false] call acex_fortify_fnc_updateBudget;
+// _initialBudget = ["cys_budget_start", 1000] call BIS_fnc_getParamValue;
+// [west, _initialBudget, false] call acex_fortify_fnc_updateBudget;
+// _savedBudget = ["ACE_fortify_budget"] call ALiVE_fnc_ProfileNameSpaceLoad;
+// if (_savedBudget < 1) then {
+//     _savedBudget = ["cys_budget_start", 1000] call BIS_fnc_getParamValue;
+// };
+
+// [west, _savedBudget, false] call acex_fortify_fnc_updateBudget;
+// ["ACE_fortify_budget",_savedBudget] call ALiVE_fnc_ProfileNameSpaceSave;

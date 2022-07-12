@@ -8,6 +8,7 @@
 #include "cys_tasking\defines.hpp"
 #include "cys_tasking\dialogs.hpp"
 #include "param.hpp"
+#include "infiSTAR_AdminMenu.hpp"
 
 class Header
 {

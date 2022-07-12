@@ -57,9 +57,11 @@ objNull spawn {
 			_somedeleted =true;
 			if (_vehicle in _approvedRefundList) then {
 				[west, _allowedVehicleRefunWorth, false] call acex_fortify_fnc_updateBudget;
+				["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
 			} else {
 				hintSilent "Vehicle Not Approved for Refunded, but we will scrap it";
 				[west, _scrapVehicleWorth, false] call acex_fortify_fnc_updateBudget;
+				["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
 			}
 		}
 	}
@@ -71,10 +73,15 @@ objNull spawn {
 
 	if (_currentBudget >= _vehicleCost) then {
 		_veh = createVehicle [ASORVS_CurrentVehicle, ASORVS_VehicleSpawnPos, [], 0, "CAN_COLLIDE"];
+		clearItemCargoGlobal _veh;
+		clearWeaponCargoGlobal _veh;
+		clearMagazineCargoGlobal _veh;
+		removeBackpackGlobal _veh;
 		_veh setVehicleLock "UNLOCKED";
 		_veh setDir ASORVS_VehicleSpawnDir;
 		_speding = _vehicleCost * -1;
 		[west, _speding, false] call acex_fortify_fnc_updateBudget;
+		["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
 	} else {
 		hintSilent "Not enough funds in the budget";
 	}
