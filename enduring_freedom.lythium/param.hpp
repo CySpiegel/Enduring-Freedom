@@ -86,9 +86,9 @@ class Params {
 
 	class cys_ambiant_enemy_driving {
 		title = "Ambiant Enemy Drivers Limit";
-		texts[] = {"Disabeld","5","10","15","20"};
-		values[] = {0,5,10,15,20};
-		default = 10;
+		texts[] = {"Disabeld","3","5","10","15","20"};
+		values[] = {0,3,5,10,15,20};
+		default = 3;
 	};
 
 	
