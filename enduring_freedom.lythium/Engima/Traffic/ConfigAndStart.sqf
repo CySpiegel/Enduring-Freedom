@@ -28,7 +28,7 @@ _civ_parameters = [
 
 // Set traffic patrols.
 _enemy_parameters = [
-	["SIDE", civilian],
+	["SIDE", independent],
 	["VEHICLES", ["CFP_I_IS_Hilux_01", "cfp_i_is_LR_M2", "cfp_i_is_offroad_M2"]],
 	["VEHICLES_COUNT", _enemyVehicLeLimit],
 	["MIN_SPAWN_DISTANCE", 800],
