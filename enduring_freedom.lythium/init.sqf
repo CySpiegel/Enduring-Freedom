@@ -72,12 +72,13 @@ if(isServer) then {
     GR_MAX_KIN_DIST = 10000;
 
     // Chance that a player murdering a civilian will get an "apology" mission
-    GR_MISSION_CHANCE = ["cys_guilt_chance", 10] call BIS_fnc_getParamValue;
+    GR_MISSION_CHANCE = 70;
+    //GR_MISSION_CHANCE = ["cys_guilt_chance", 70] call BIS_fnc_getParamValue;
 
     // Delay in seconds after death until player is notified of body delivery mission
-    GR_TASK_MIN_DELAY=10;
-    GR_TASK_MID_DELAY=15;
-    GR_TASK_MAX_DELAY=20;
+    GR_TASK_MIN_DELAY=1;
+    GR_TASK_MID_DELAY=3;
+    GR_TASK_MAX_DELAY=7;
 
     // Set custom faction names to determine blame when performing an autopsy
     GR_FACTIONNAME_EAST = "RUSSIA";
@@ -165,22 +166,3 @@ _3dIcon_text = addMissionEventHandler ["Draw3D", {
         ];
     };   
 }];
-
-// _initialBudget = ["cys_budget_start", 1000] call BIS_fnc_getParamValue;
-// [west, _initialBudget, false] call acex_fortify_fnc_updateBudget;
-// _savedBudget = ["ACE_fortify_budget"] call ALiVE_fnc_ProfileNameSpaceLoad;
-// if (_savedBudget < 1) then {
-//     _savedBudget = ["cys_budget_start", 1000] call BIS_fnc_getParamValue;
-// };
-
-// [west, _savedBudget, false] call acex_fortify_fnc_updateBudget;
-// ["ACE_fortify_budget",_savedBudget] call ALiVE_fnc_ProfileNameSpaceSave;
-
-_savedBudget = ["cys_budget_start", 1] call BIS_fnc_getParamValue;
-
-if (_savedBudget == 1) then { 
-    _savedBudget = ["ACE_fortify_budget"] call ALiVE_fnc_ProfileNameSpaceLoad;
-    ["ACE_fortify_budget",_savedBudget] call ALiVE_fnc_ProfileNameSpaceSave;
-};
-
-[west, _savedBudget, false] call acex_fortify_fnc_updateBudget;

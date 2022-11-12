@@ -77,12 +77,21 @@ class Params {
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		default = 30;
 	};
-		class cys_ambiant_driving {
+		class cys_ambiant_civilian_driving {
 		title = "Ambiant Drivers Limit";
 		texts[] = {"Disabeld","5","10","15","20"};
 		values[] = {0,5,10,15,20};
 		default = 10;
 	};
+
+	class cys_ambiant_enemy_driving {
+		title = "Ambiant Enemy Drivers Limit";
+		texts[] = {"Disabeld","5","10","15","20"};
+		values[] = {0,5,10,15,20};
+		default = 10;
+	};
+
+	
 	class cys_traffic_headless {
 		title = "Ambiant Drivers Headless Client (only use if HC1 is connected)";
 		texts[] = {"Disabeld","Enabled";};
