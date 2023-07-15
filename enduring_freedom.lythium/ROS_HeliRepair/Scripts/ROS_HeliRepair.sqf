@@ -98,7 +98,7 @@ if (isNull _nHeliPad) exitWith {["There is no nearby helipad within (~20m) of th
 
 // If unit not close to initpos move to relative position
 _pos = (_nHeliPad modeltoworld [20,3.5,0]);
-if (_hRepairer distance _pos >2) then {
+if (_hRepairer distance2D _pos >2) then {
 	_hRepairer setpos _pos;
 	_hRepairer setdir (_hRepairer getdir _nHeliPad);
 	_initPos = getPosATL _hRepairer;
@@ -226,7 +226,7 @@ ROS_Repair_heli_fnc = {
 	_hrepaircase setposatl (_hRepairer modelToWorld [0.5,-0.2,-0.5]);
 	_hrepaircase setdir (getdir _hRepairer +10);
 
-	if (isEngineOn _veh && isTouchingGround _veh && _veh distance _nHeliPad <5 && alive _veh) then {
+	if (isEngineOn _veh && isTouchingGround _veh && _veh distance2D _nHeliPad <5 && alive _veh) then {
 		if (isplayer _pilot) then {
 			[_hRepairer, "Switch the engine and lights off and Exit the vehicle."] remoteExec ["sidechat",0];
 			["Please switch the engine and lights off and Exit the vehicle."] remoteExec["hint",0];
@@ -268,6 +268,8 @@ ROS_Repair_heli_fnc = {
 	_allHPnames = ((getAllHitPointsDamage _veh) select 0);
 	_allHPvalues = ((getAllHitPointsDamage _veh) select 2);
 	_numDamHP = {_x >0} count _allHPvalues;
+	// Vehicle doesnt have hitpoints simulate some minor global damage
+	if (_allHPvalues isEqualTo [] && damage _veh == 0) then {_veh setdamage 0.3};
 
 	sleep 1;
 
@@ -362,15 +364,15 @@ ROS_Repair_heli_fnc = {
 	_hRepairer enableai "move";
 	_hRepairer domove _firstPos;
 
-	waitUntil {_hRepairer distance _firstpos <3.5};
+	waitUntil {_hRepairer distance2D _firstpos <3.5};
 
 	_hRepairer setdir (getdir _veh)-90;
 	_hRepairer disableAI "anim";
 	_hRepairer setDir (_hRepairer getDir _reppos);
 
 	// Forced walk to reppos
-	_maxD = (_firstpos distance _reppos);
-	while {_hRepairer distance _reppos >0.12 && alive _veh && !(_hRepairer distance _firstpos > _maxD)} do {
+	_maxD = (_firstpos distance2D _reppos);
+	while {_hRepairer distance2D _reppos >0.12 && alive _veh && !(_hRepairer distance2D _firstpos > _maxD)} do {
 		_hRepairer playMoveNow "amovpercmwlksnonwnondf";
 		sleep 0.0001;
 	};
@@ -392,7 +394,7 @@ ROS_Repair_heli_fnc = {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Start REPAIR AND OR REFUEL
-	if (selectMax _allHPvalues >=0.1 or damage _veh >0.05) then {
+	if (selectMax _allHPvalues >=0.1 or damage _veh >0.1) then {
 
 		// Create welding cart
 		_hweldingCart = createVehicle ["Land_WeldingTrolley_01_F", (position _hRepairer), [], 0, "NONE"];
@@ -439,7 +441,7 @@ ROS_Repair_heli_fnc = {
 			{if (_hpdamage>0 && _hp find _x>-1) then {_hitpartDesc = toUpper (_hitpartText select _foreachindex)}} foreach _hitpartType;
 
 			if (_hpdamage >0) then {
-				if (isplayer _pilot) then {[format ["Repairing: %1", _hitpartDesc]] remoteExec ["hint", _pilot]};
+				if (isplayer _pilot) then {[format ["Repairing:\n%1", _hitpartDesc]] remoteExec ["hint", _pilot]};
 			};
 
 			[_veh, _hp, 0, true] call BIS_fnc_setHitPointDamage;
@@ -562,7 +564,7 @@ ROS_Repair_heli_fnc = {
 	_wp0 setWaypointType "MOVE";
 	_hRepairer setspeedMode "limited";
 
-	waitUntil {_hRepairer distance _initPos <3};
+	waitUntil {_hRepairer distance2D _initPos <3};
 	[""] remoteExec ["hint", _pilot];
 	sleep 1;
 
@@ -582,8 +584,7 @@ ROS_Repair_heli_fnc = {
 		publicVariable "ROS_rothBeaconOn";
 	};
 
-	ROS_Repair_heli_completed = true;
-	publicVariable "ROS_Repair_heli_fnc_completed";
+	if (true) exitWith {true};
 
 }; // End ROS_Repair_heli_fnc
 
@@ -595,15 +596,14 @@ ROS_Repair_heli_fnc = {
 // Find nearest damaged Heli
 while {true} do {
 
-	if (ROS_Repair_heli_completed) then {
-		ROS_Repair_heli_completed = false;
-	};
 	// Look for helis nearby and repair them
-	_nearestHeli = nearestObject [_nHeliPad, "Helicopter"];
-	if (!isNull _nearestHeli && alive _nearestHeli) then {
+	_nearestHeli = objNull;
+	_nearestHelis = (nearestObjects [_nHeliPad, ["Helicopter"], 80]) select {_x distance _nHeliPad <80 && alive _x && !isNull driver _x && alive driver _x};
+	if (count _nearestHelis >0) then {_nearestHeli = _nearestHelis select 0};
+	if (!isNull _nearestHeli) then {
 
 		// Is pad clear - if not remove debris
-		_neardead = allDead select {_x distance _nHeliPad <15};
+		_neardead = allDead select {_x distance2d _nHeliPad <15};
 		if (count _neardead>0) then {
 			["Please hold while we clear the debris"] remoteExec ["hint", (driver _nearestheli)];
 			sleep 5;
@@ -629,7 +629,7 @@ while {true} do {
 		if (isTouchingGround _nearestHeli) then {
 
 			if (_heliFuel <0.9 or _heliDamage >=0.1) then {
-				if (_nearestHeli distance _nHeliPad >_pDist) then {
+				if (_nearestHeli distance2D _nHeliPad >_pDist) then {
 					if (isplayer (driver _nearestHeli)) then {
 						[format ["You should be <%1m from the center of the pad.\nYou need to move closer to the center.", _pDist]] remoteExec ["hint",(driver _nearestHeli)]};
 				};
@@ -649,7 +649,7 @@ while {true} do {
 			[] call ROS_HeliFuelPipes_Fnc;
 
 			// Start repair if fuel (<0.9) or vehicle damage (any hp>0.1)
-			if (_nearestHeli distance _nHeliPad <= _pDist && (_heliFuel <0.9 or _heliDamage >=0.1)) then {
+			if (_nearestHeli distance2D _nHeliPad <= _pDist && (_heliFuel <0.9 or _heliDamage >=0.1)) then {
 				if (isplayer (driver _nearestHeli)) then {
 					["Aligning with repair bay"] remoteExec ["hint", (driver _nearestHeli)];
 					_nearestHeli setPos (getpos _nHeliPad);
@@ -659,14 +659,18 @@ while {true} do {
 				};
 			};
 
-			waitUntil {ROS_Repair_heli_completed};
-
 			// Switch off orange repair light
 			if (ROS_rothBeaconOn) then {
 				ROS_rothBeaconOn = false;
 				publicVariable "ROS_rothBeaconOn";
 			};
 
+			// Clear var nheli
+			_nearestHeli = objNull;
+			ROSHeliRepaired = false;
+			publicVariable "ROSHeliRepaired";
+			ROSHeliRefueled = false;
+			publicVariable "ROSHeliRefueled";
 		}; // istouchingground
 	}; // !isnull nearestheli
 

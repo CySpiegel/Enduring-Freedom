@@ -45,7 +45,7 @@ if (count units group _unit >1) then {_unit join grpNull};
 _unit setVariable ["ALIVE_profileIgnore", true];
 
 // Add loadout
-[_unit] execvm "ROS_HeliRepair\Scripts\ROS_loadout.sqf";
+[_unit] execvm "ROS_HeliRepair\scripts\ROS_loadout.sqf";
 
 _nHeliPads = nearestObjects [_unit, ["HeliH"], 30];
 if (count _nHeliPads >0) then {_nHeliPad = _nHeliPads select 0};
@@ -101,7 +101,7 @@ if (isnil "ROS_WaveOut") then {ROS_WaveOut = false;};
 
 while {true} do {
 	// Look for helis nearby and wave them in them
-	_nHelis = nearestObjects [_unit,["helicopter"],100];
+	_nHelis = nearestObjects [_unit,["helicopter"],80];
 	if (count _nHelis >0) then {
 		_nHeli = _nHelis select 0;
 	} else {
@@ -113,8 +113,10 @@ while {true} do {
 		_vehFuel = fuel _nHeli;
 
 		// Wave In
-		if (!isTouchingGround _nHeli && _nHeli distance _unit <= 100 && (_vehDamage >=0.1 or _vehFuel <0.9)) then {
-			if (ROS_WaveOut) then {ROS_WaveOut = false ;};
+		if (!isTouchingGround _nHeli && _nHeli distance _unit <= 80 && (_vehDamage >=0.1 or _vehFuel <0.9)) then {
+			if (ROS_WaveOut) then {
+				ROS_WaveOut = false;
+			};
 			[_unit] call ROS_addlights_Fnc;
 			_unit setdir (_unit getdir _nHeli);
 			[_unit, "Acts_JetsMarshallingStraight_loop"] remoteExec ["switchmove", 0];
@@ -133,7 +135,7 @@ while {true} do {
 				ROS_WaveOut = true;
 			};
 		};
-	};
+	}; // !isnull _nHeli
 	sleep 2;
 };
 
