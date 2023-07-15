@@ -45,6 +45,9 @@ sleep 8.5;
 /********************* UNIT CREATION ********************/
 _unit = group player createUnit [_unittype, [(getPos bon_recruit_barracks select 0) + 10 - random 10,(getPos bon_recruit_barracks select 1) + 10 - random 20,0], [], 0, "FORM"];
 _unit setRank "PRIVATE";
+_unit setSkill .70;
+_unit allowFleeing 0;
+
 [_unit] execVM (BON_RECRUIT_PATH+"init_newunit.sqf");
 /*******************************************************/
 

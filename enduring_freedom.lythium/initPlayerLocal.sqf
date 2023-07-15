@@ -1,24 +1,27 @@
-["acex_fortify_objectPlaced", {
-	[ALiVE_SYS_LOGISTICS, "updateObject", [(_this select 2)]] call ALIVE_fnc_logistics;
-	["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
-}] call CBA_fnc_addEventHandler;
-
-["acex_fortify_objectDeleted", {
-	[ALiVE_SYS_LOGISTICS, "removeObject", [(_this select 2)]] call ALIVE_fnc_logistics;
-	["ACE_Fortify_budget_change", []] call CBA_fnc_serverEvent;
-}] call CBA_fnc_addEventHandler;
-
-_action = ["ASO_Logistics_Update", "Save Position", "", {
-	[ALiVE_SYS_LOGISTICS, "updateObject", [_target]] call ALiVE_fnc_logistics;
-	hintSilent "Position saved!";
-}, {true}] call ace_interact_menu_fnc_createAction;
-
-
-["Reammobox_F", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+// --- Enable full spectator in respawn screen
+{
+	missionNamespace setVariable [_x, true];
+} forEach [
+	"BIS_respSpecAI",					// Allow spectating of AI
+	"BIS_respSpecAllowFreeCamera",		// Allow moving the camera independent from units (players)
+	"BIS_respSpecAllow3PPCamera",		// Allow 3rd person camera
+	"BIS_respSpecShowFocus",			// Show info about the selected unit (dissapears behind the respawn UI)
+	"BIS_respSpecShowCameraButtons",	// Show buttons for switching between free camera, 1st and 3rd person view (partially overlayed by respawn UI)
+	"BIS_respSpecShowControlsHelper",	// Show the controls tutorial box
+	"BIS_respSpecShowHeader",			// Top bar of the spectator UI including mission time
+	"BIS_respSpecLists"					// Show list of available units and locations on the left hand side
+];
 
 
-nul = [player] execVM "scripts\check.sqf";
+// Respawn with loadout at time of death
+player addEventHandler ["Killed", { player setVariable ["TAG_DeathLoadout", getUnitLoadout player]; }];
+player addEventHandler ["Respawn", 
+{ 
+	private _loadout = player getVariable "TAG_DeathLoadout"; 
+	if (!isNil "_loadout") then { 
+		player setUnitLoadout _loadout; 
+	}; 
+}];
 
 if (!isServer && (player != player)) then { 
     waitUntil {player == player}; 
