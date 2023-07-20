@@ -4,6 +4,9 @@
 #include "KPGUI\KPGUI_defines.hpp"
 #include "KPCF\ui\KPCF_dialog.hpp"
 #include "Configs\params.hpp"
+#include "bon_recruit_units\dialog\common.hpp"
+#include "bon_recruit_units\dialog\recruitment.hpp"
+#include "R3F_LOG\desc_include.h"
 
 // Autorship
 author = "Cytreen Spiegel";

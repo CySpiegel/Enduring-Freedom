@@ -23,6 +23,7 @@ if(_enableTraffic > 0) then{
 // Start Task Removal System for custom missions
 call compile preprocessFileLineNumbers "Tasking\removeTasks.sqf";
 
+[] execVM "bon_recruit_units\init.sqf";
 
 //Disable Vcom on vehicles
 //[{{Driver _x setvariable ["NOAI",true];} foreach (vehicles select {_x isKindOf 'air'});}, 1, []] call CBA_fnc_addPerFrameHandler;
@@ -31,6 +32,8 @@ call compile preprocessFileLineNumbers "Tasking\removeTasks.sqf";
 if (isServer) then {
     [] call compileFinal preprocessFileLineNumbers "Scripts\server\init_server.sqf";
 };
+
+execVM "R3F_LOG\init.sqf";
 
 // Make AI Regroup with player upon reconnecting to server and teleport back to there location
 waituntil {(player getvariable ["alive_sys_player_playerloaded",false])};
@@ -47,10 +50,10 @@ sleep 2;
 
 if(isServer) then {
     // set the civilian types that will act as next-of-kin
-    GR_CIV_TYPES = ["CFP_C_ME_Civ_1_01","CFP_C_ME_Civ_2_01"];
+    GR_CIV_TYPES = ["CFP_C_AFG_Civilian_02","CFP_C_AFG_Civilian_01","CFP_C_ME_Civ_2_01","CFP_C_ME_Civ_1_01"];
 
     // set the maximum distance from murder that next-of-kin will be spawned
-    GR_MAX_KIN_DIST = 10000;
+    GR_MAX_KIN_DIST = 5000;
 
     // Chance that a player murdering a civilian will get an "apology" mission
     GR_MISSION_CHANCE = 20;
@@ -89,7 +92,7 @@ if(isServer) then {
     // NOTE: if your event handler uses _nextofkin or _body, make sure to turn off garbage collection with:
     // _nextofkin setVariable ["GR_WILLDELETE",false];
     //_body setVariable ["GR_WILLDELETE",false];
-		
+	
 	[{
 		params["_killer", "_killed", "_nextofkin"];
 		// protect the body
@@ -106,3 +109,9 @@ if(isServer) then {
 		_nextofkin setVariable ["ALiVE_SYS_GC_IGNORE",true];
 	}] call GR_fnc_addConcealDeathEventHandler;
 };
+
+if(!hasInterface) then {
+    ["grad_civs_lifecycle_civ_added", { _this call ALIVE_fnc_addCivilianActions;}] call CBA_fnc_addEventHandler;
+};
+
+["ALiVE | Enduring Freedom - Executing init.sqf..."] call ALiVE_fnc_Dump;
