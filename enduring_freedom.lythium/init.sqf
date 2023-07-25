@@ -59,8 +59,8 @@ if(isServer) then {
     GR_MISSION_CHANCE = 20;
 
     // Delay in seconds after death until player is notified of body delivery mission
-    GR_TASK_MIN_DELAY=10;
-    GR_TASK_MID_DELAY=10;
+    GR_TASK_MIN_DELAY=5;
+    GR_TASK_MID_DELAY=7;
     GR_TASK_MAX_DELAY=10;
 
     // Set custom faction names to determine blame when performing an autopsy

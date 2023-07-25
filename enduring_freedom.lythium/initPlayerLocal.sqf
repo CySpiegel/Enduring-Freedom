@@ -1,3 +1,5 @@
+["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+
 // --- Enable full spectator in respawn screen
 {
 	missionNamespace setVariable [_x, true];
