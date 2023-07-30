@@ -33,7 +33,7 @@ if (isServer) then {
     [] call compileFinal preprocessFileLineNumbers "Scripts\server\init_server.sqf";
 };
 
-execVM "R3F_LOG\init.sqf";
+//execVM "R3F_LOG\init.sqf";
 
 // Make AI Regroup with player upon reconnecting to server and teleport back to there location
 waituntil {(player getvariable ["alive_sys_player_playerloaded",false])};
