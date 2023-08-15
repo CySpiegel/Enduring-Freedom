@@ -6,7 +6,7 @@
 #include "Configs\params.hpp"
 #include "bon_recruit_units\dialog\common.hpp"
 #include "bon_recruit_units\dialog\recruitment.hpp"
-//#include "R3F_LOG\desc_include.h"
+
 
 // Autorship
 author = "Cytreen Spiegel";
@@ -53,9 +53,4 @@ class CfgFunctions
 class CfgNotifications
 {
 	#include "Configs\Tasking\config.hpp"
-}
-
-class CfgSounds
-{
-	#include "Sounds\config.hpp"
 }
